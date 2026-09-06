@@ -1,0 +1,528 @@
+{
+  "brandCount": 74,
+  "fontCount": 25,
+  "brands": [
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "file": "airbnb.json"
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "file": "airtable.json"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "file": "apple.json"
+    },
+    {
+      "id": "binance",
+      "name": "Binance",
+      "file": "binance.json"
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "file": "bmw.json"
+    },
+    {
+      "id": "bmw-m",
+      "name": "BMW M",
+      "file": "bmw-m.json"
+    },
+    {
+      "id": "bugatti",
+      "name": "Bugatti",
+      "file": "bugatti.json"
+    },
+    {
+      "id": "cal",
+      "name": "Cal.com",
+      "file": "cal.json"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "file": "claude.json"
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "file": "clay.json"
+    },
+    {
+      "id": "clickhouse",
+      "name": "ClickHouse",
+      "file": "clickhouse.json"
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "file": "cohere.json"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "file": "coinbase.json"
+    },
+    {
+      "id": "composio",
+      "name": "Composio",
+      "file": "composio.json"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "file": "cursor.json"
+    },
+    {
+      "id": "dell-1996",
+      "name": "Dell 1996",
+      "file": "dell-1996.json"
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "file": "elevenlabs.json"
+    },
+    {
+      "id": "expo",
+      "name": "Expo",
+      "file": "expo.json"
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "file": "ferrari.json"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "file": "figma.json"
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "file": "framer.json"
+    },
+    {
+      "id": "hashicorp",
+      "name": "HashiCorp",
+      "file": "hashicorp.json"
+    },
+    {
+      "id": "hp",
+      "name": "HP",
+      "file": "hp.json"
+    },
+    {
+      "id": "ibm",
+      "name": "IBM",
+      "file": "ibm.json"
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom",
+      "file": "intercom.json"
+    },
+    {
+      "id": "kraken",
+      "name": "Kraken",
+      "file": "kraken.json"
+    },
+    {
+      "id": "lamborghini",
+      "name": "Lamborghini",
+      "file": "lamborghini.json"
+    },
+    {
+      "id": "linear.app",
+      "name": "Linear",
+      "file": "linear.app.json"
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "file": "lovable.json"
+    },
+    {
+      "id": "mastercard",
+      "name": "Mastercard",
+      "file": "mastercard.json"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "file": "meta.json"
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "file": "minimax.json"
+    },
+    {
+      "id": "mintlify",
+      "name": "Mintlify",
+      "file": "mintlify.json"
+    },
+    {
+      "id": "miro",
+      "name": "Miro",
+      "file": "miro.json"
+    },
+    {
+      "id": "mistral.ai",
+      "name": "Mistral AI",
+      "file": "mistral.ai.json"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "file": "mongodb.json"
+    },
+    {
+      "id": "nike",
+      "name": "Nike",
+      "file": "nike.json"
+    },
+    {
+      "id": "nintendo-2001",
+      "name": "Nintendo 2001",
+      "file": "nintendo-2001.json"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "file": "notion.json"
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "file": "nvidia.json"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "file": "ollama.json"
+    },
+    {
+      "id": "opencode.ai",
+      "name": "OpenCode",
+      "file": "opencode.ai.json"
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest",
+      "file": "pinterest.json"
+    },
+    {
+      "id": "playstation",
+      "name": "PlayStation",
+      "file": "playstation.json"
+    },
+    {
+      "id": "posthog",
+      "name": "PostHog",
+      "file": "posthog.json"
+    },
+    {
+      "id": "raycast",
+      "name": "Raycast",
+      "file": "raycast.json"
+    },
+    {
+      "id": "renault",
+      "name": "Renault",
+      "file": "renault.json"
+    },
+    {
+      "id": "replicate",
+      "name": "Replicate",
+      "file": "replicate.json"
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "file": "resend.json"
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut",
+      "file": "revolut.json"
+    },
+    {
+      "id": "runwayml",
+      "name": "Runway",
+      "file": "runwayml.json"
+    },
+    {
+      "id": "sanity",
+      "name": "Sanity",
+      "file": "sanity.json"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "file": "sentry.json"
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "file": "shopify.json"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "file": "slack.json"
+    },
+    {
+      "id": "spacex",
+      "name": "SpaceX",
+      "file": "spacex.json"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "file": "spotify.json"
+    },
+    {
+      "id": "starbucks",
+      "name": "Starbucks",
+      "file": "starbucks.json"
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "file": "stripe.json"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "file": "supabase.json"
+    },
+    {
+      "id": "superhuman",
+      "name": "Superhuman",
+      "file": "superhuman.json"
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "file": "tesla.json"
+    },
+    {
+      "id": "theverge",
+      "name": "The Verge",
+      "file": "theverge.json"
+    },
+    {
+      "id": "together.ai",
+      "name": "Together AI",
+      "file": "together.ai.json"
+    },
+    {
+      "id": "uber",
+      "name": "Uber",
+      "file": "uber.json"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "file": "vercel.json"
+    },
+    {
+      "id": "vodafone",
+      "name": "Vodafone",
+      "file": "vodafone.json"
+    },
+    {
+      "id": "voltagent",
+      "name": "VoltAgent",
+      "file": "voltagent.json"
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "file": "warp.json"
+    },
+    {
+      "id": "webflow",
+      "name": "Webflow",
+      "file": "webflow.json"
+    },
+    {
+      "id": "wired",
+      "name": "Wired",
+      "file": "wired.json"
+    },
+    {
+      "id": "wise",
+      "name": "Wise",
+      "file": "wise.json"
+    },
+    {
+      "id": "x.ai",
+      "name": "xAI",
+      "file": "x.ai.json"
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier",
+      "file": "zapier.json"
+    }
+  ],
+  "families": [
+    {
+      "family": "Anton",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Anton"
+    },
+    {
+      "family": "Archivo Black",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Archivo+Black"
+    },
+    {
+      "family": "Arimo",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Arimo"
+    },
+    {
+      "family": "Bebas Neue",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Bebas+Neue"
+    },
+    {
+      "family": "Cal Sans",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Cal+Sans"
+    },
+    {
+      "family": "Cormorant Garamond",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Cormorant+Garamond"
+    },
+    {
+      "family": "DM Sans",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/DM+Sans"
+    },
+    {
+      "family": "Geist",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Geist"
+    },
+    {
+      "family": "Geist Mono",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Geist+Mono"
+    },
+    {
+      "family": "IBM Plex Sans",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/IBM+Plex+Sans"
+    },
+    {
+      "family": "Inconsolata",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Inconsolata"
+    },
+    {
+      "family": "Instrument Serif",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Instrument+Serif"
+    },
+    {
+      "family": "Inter",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Inter"
+    },
+    {
+      "family": "Inter Tight",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Inter+Tight"
+    },
+    {
+      "family": "JetBrains Mono",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/JetBrains+Mono"
+    },
+    {
+      "family": "Lora",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Lora"
+    },
+    {
+      "family": "Manrope",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Manrope"
+    },
+    {
+      "family": "Mona Sans",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Mona+Sans"
+    },
+    {
+      "family": "Newsreader",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Newsreader"
+    },
+    {
+      "family": "Playfair Display",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Playfair+Display"
+    },
+    {
+      "family": "Roboto",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Roboto"
+    },
+    {
+      "family": "Rubik",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Rubik"
+    },
+    {
+      "family": "Saira Condensed",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Saira+Condensed"
+    },
+    {
+      "family": "Space Grotesk",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Space+Grotesk"
+    },
+    {
+      "family": "Tinos",
+      "provider": "Google Fonts",
+      "license": "Open-source font",
+      "url": "https://fonts.google.com/specimen/Tinos"
+    }
+  ]
+}

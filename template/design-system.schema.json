@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.skills-maker/schema/design-system-1.0.0.json",
+  "title": "Normalized DESIGN.md dataset record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "brand",
+    "design",
+    "colors",
+    "typography",
+    "layout",
+    "shape",
+    "elevation",
+    "components",
+    "imagery",
+    "motion",
+    "content",
+    "useCases",
+    "agentGuidance",
+    "knownGaps",
+    "additionalGuidance"
+  ],
+  "$defs": {
+    "guidance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["section", "content"],
+      "properties": {
+        "section": { "type": "string" },
+        "content": { "type": "string" }
+      }
+    },
+    "guidanceList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/guidance" }
+    },
+    "tokenMap": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "source"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "format"],
+          "properties": {
+            "file": { "type": "string" },
+            "format": { "enum": ["yaml+markdown", "markdown", "generated"] }
+          }
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "required": ["overview", "principles", "signatureElements"],
+      "properties": {
+        "overview": { "$ref": "#/$defs/guidanceList" },
+        "principles": { "type": "array", "items": { "type": "string" } },
+        "signatureElements": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "required": ["tokens", "guidance"],
+      "properties": {
+        "tokens": { "$ref": "#/$defs/tokenMap" },
+        "guidance": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["publicFontsOnly", "families", "styles", "substitutionAdjustment", "guidance"],
+      "properties": {
+        "publicFontsOnly": { "const": true },
+        "families": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["family", "provider", "license", "url"],
+            "properties": {
+              "family": { "type": "string" },
+              "provider": { "const": "Google Fonts" },
+              "license": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "styles": { "$ref": "#/$defs/tokenMap" },
+        "substitutionAdjustment": { "type": ["string", "null"] },
+        "guidance": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "required": ["spacing", "spacingValues", "gridAndContainers", "responsive"],
+      "properties": {
+        "spacing": { "$ref": "#/$defs/tokenMap" },
+        "spacingValues": { "type": "array", "items": { "type": "string" } },
+        "gridAndContainers": { "$ref": "#/$defs/guidanceList" },
+        "responsive": {
+          "type": "object",
+          "required": ["breakpoints", "guidance"],
+          "properties": {
+            "breakpoints": { "type": "array", "items": { "type": "string" } },
+            "guidance": { "$ref": "#/$defs/guidanceList" }
+          }
+        }
+      }
+    },
+    "shape": {
+      "type": "object",
+      "required": ["radii", "radiusValues", "guidance"],
+      "properties": {
+        "radii": { "$ref": "#/$defs/tokenMap" },
+        "radiusValues": { "type": "array", "items": { "type": "string" } },
+        "guidance": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "elevation": {
+      "type": "object",
+      "required": ["tokens", "guidance"],
+      "properties": {
+        "tokens": { "$ref": "#/$defs/tokenMap" },
+        "guidance": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "components": {
+      "type": "object",
+      "required": ["tokens", "guidance"],
+      "properties": {
+        "tokens": { "$ref": "#/$defs/tokenMap" },
+        "guidance": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "imagery": {
+      "type": "object",
+      "required": ["guidance"],
+      "properties": { "guidance": { "$ref": "#/$defs/guidanceList" } }
+    },
+    "motion": {
+      "type": "object",
+      "required": ["guidance"],
+      "properties": { "guidance": { "$ref": "#/$defs/guidanceList" } }
+    },
+    "content": {
+      "type": "object",
+      "required": ["hierarchy", "voiceAndTone"],
+      "properties": {
+        "hierarchy": { "$ref": "#/$defs/guidanceList" },
+        "voiceAndTone": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "useCases": {
+      "type": "object",
+      "required": ["recommended", "avoid"],
+      "properties": {
+        "recommended": { "type": "array", "items": { "type": "string" } },
+        "avoid": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "agentGuidance": {
+      "type": "object",
+      "required": ["promptGuide", "iterationGuide"],
+      "properties": {
+        "promptGuide": { "$ref": "#/$defs/guidanceList" },
+        "iterationGuide": { "$ref": "#/$defs/guidanceList" }
+      }
+    },
+    "knownGaps": { "$ref": "#/$defs/guidanceList" },
+    "additionalGuidance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "title", "path", "content"],
+        "properties": {
+          "level": { "type": "integer" },
+          "title": { "type": "string" },
+          "path": { "type": "string" },
+          "content": { "type": "string" }
+        }
+      }
+    }
+  }
+}

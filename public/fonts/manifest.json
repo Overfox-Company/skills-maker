@@ -1,0 +1,638 @@
+[
+  {
+    "family": "Anton",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Anton",
+    "css": "/fonts/anton/font.css",
+    "files": [
+      "/fonts/anton/9a0b87665ccc2051.ttf"
+    ],
+    "weights": [
+      400
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/OFL.txt"
+  },
+  {
+    "family": "Archivo Black",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Archivo+Black",
+    "css": "/fonts/archivo-black/font.css",
+    "files": [
+      "/fonts/archivo-black/f57c41b0eb84cc4c.ttf"
+    ],
+    "weights": [
+      400
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/archivoblack/OFL.txt"
+  },
+  {
+    "family": "Arimo",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Arimo",
+    "css": "/fonts/arimo/font.css",
+    "files": [
+      "/fonts/arimo/2a5f6aa64321acf7.ttf",
+      "/fonts/arimo/98ec971f47d6f239.ttf",
+      "/fonts/arimo/1a644bcc1bf5fa72.ttf",
+      "/fonts/arimo/2896808b2b5017ad.ttf",
+      "/fonts/arimo/6f2e69a4bd86a4a9.ttf",
+      "/fonts/arimo/c9c5d9fc72b61cf7.ttf",
+      "/fonts/arimo/754c1462461a27a6.ttf",
+      "/fonts/arimo/98ef213294065e27.ttf"
+    ],
+    "weights": [
+      400,
+      700
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/arimo/OFL.txt"
+  },
+  {
+    "family": "Bebas Neue",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Bebas+Neue",
+    "css": "/fonts/bebas-neue/font.css",
+    "files": [
+      "/fonts/bebas-neue/c921b0a4deab0e7f.ttf"
+    ],
+    "weights": [
+      400
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/bebasneue/OFL.txt"
+  },
+  {
+    "family": "Cal Sans",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Cal+Sans",
+    "css": "/fonts/cal-sans/font.css",
+    "files": [
+      "/fonts/cal-sans/b862f2bb651fde80.ttf"
+    ],
+    "weights": [
+      400
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/calsans/OFL.txt"
+  },
+  {
+    "family": "Cormorant Garamond",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Cormorant+Garamond",
+    "css": "/fonts/cormorant-garamond/font.css",
+    "files": [
+      "/fonts/cormorant-garamond/b1918663f099da1f.ttf",
+      "/fonts/cormorant-garamond/374c6c52ce838c05.ttf",
+      "/fonts/cormorant-garamond/73152f8d0c78aab8.ttf",
+      "/fonts/cormorant-garamond/9872c1a09b5393df.ttf",
+      "/fonts/cormorant-garamond/acfcbeb83b0a48be.ttf",
+      "/fonts/cormorant-garamond/911bf559d287436e.ttf",
+      "/fonts/cormorant-garamond/bb8f3c3b0ca40380.ttf",
+      "/fonts/cormorant-garamond/75407d22188550d6.ttf",
+      "/fonts/cormorant-garamond/705776b6237d1fd4.ttf",
+      "/fonts/cormorant-garamond/a9565983a6247cbc.ttf"
+    ],
+    "weights": [
+      300,
+      700
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt"
+  },
+  {
+    "family": "DM Sans",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/DM+Sans",
+    "css": "/fonts/dm-sans/font.css",
+    "files": [
+      "/fonts/dm-sans/f4e8a65e4dc0d72d.ttf",
+      "/fonts/dm-sans/bd3286149a123f93.ttf",
+      "/fonts/dm-sans/9ca12861e40c8add.ttf",
+      "/fonts/dm-sans/24ba74e1b36dbe94.ttf",
+      "/fonts/dm-sans/1d1b2dc337b4f025.ttf",
+      "/fonts/dm-sans/0348c5b8c3060783.ttf",
+      "/fonts/dm-sans/70e074455d6b9e0a.ttf",
+      "/fonts/dm-sans/e7f62cb72d669686.ttf",
+      "/fonts/dm-sans/190e13314888e7c6.ttf",
+      "/fonts/dm-sans/fe5eb4d77e035c96.ttf",
+      "/fonts/dm-sans/21353ee092ca5f7e.ttf",
+      "/fonts/dm-sans/86b5709fc72608e5.ttf",
+      "/fonts/dm-sans/0569c822cab6c510.ttf",
+      "/fonts/dm-sans/9bd8ba39c9d55e06.ttf",
+      "/fonts/dm-sans/18e69125ce1f964e.ttf",
+      "/fonts/dm-sans/8257aa2626c379cb.ttf",
+      "/fonts/dm-sans/613415ecf5833cac.ttf",
+      "/fonts/dm-sans/13523a93dcccf149.ttf"
+    ],
+    "weights": [
+      100,
+      1000
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt"
+  },
+  {
+    "family": "Geist",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Geist",
+    "css": "/fonts/geist/font.css",
+    "files": [
+      "/fonts/geist/9a91cb12e345785d.ttf",
+      "/fonts/geist/840db094d25c110f.ttf",
+      "/fonts/geist/a96db5f09608be09.ttf",
+      "/fonts/geist/cb12f3ea236f725d.ttf",
+      "/fonts/geist/8a9cbd74c92ae5f9.ttf",
+      "/fonts/geist/6784bb79a59f63c5.ttf",
+      "/fonts/geist/1cc40aede5a49f98.ttf",
+      "/fonts/geist/99a1d67570a31570.ttf",
+      "/fonts/geist/2508fe691ee2b496.ttf",
+      "/fonts/geist/95a5fb3e6930e4c7.ttf",
+      "/fonts/geist/c509c431f0372dad.ttf",
+      "/fonts/geist/900c1340657ef456.ttf",
+      "/fonts/geist/c2bef016fb9b4bcd.ttf",
+      "/fonts/geist/541119bccb21575e.ttf",
+      "/fonts/geist/011cb50bc76b8e25.ttf",
+      "/fonts/geist/e374eee52bb36e03.ttf",
+      "/fonts/geist/6b270e7e6da1b50c.ttf",
+      "/fonts/geist/460dc3935faa5867.ttf"
+    ],
+    "weights": [
+      100,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/geist/OFL.txt"
+  },
+  {
+    "family": "Geist Mono",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Geist+Mono",
+    "css": "/fonts/geist-mono/font.css",
+    "files": [
+      "/fonts/geist-mono/f824d8c0617be51d.ttf",
+      "/fonts/geist-mono/a62f02f376b5c5af.ttf",
+      "/fonts/geist-mono/ddf4121c487d340e.ttf",
+      "/fonts/geist-mono/1fea0bb0cb82c730.ttf",
+      "/fonts/geist-mono/d75b21db7b5f0d1c.ttf",
+      "/fonts/geist-mono/1958343d86cf29db.ttf",
+      "/fonts/geist-mono/a70612b531ced64f.ttf",
+      "/fonts/geist-mono/69c1585e41b82bb4.ttf",
+      "/fonts/geist-mono/ee4e2aeee4aea401.ttf",
+      "/fonts/geist-mono/0b126ffb591af3f4.ttf",
+      "/fonts/geist-mono/aae7fdc7e9490cfd.ttf",
+      "/fonts/geist-mono/e3481e94567757fd.ttf",
+      "/fonts/geist-mono/706d7515d64b1e19.ttf",
+      "/fonts/geist-mono/e858776f9ad0d058.ttf",
+      "/fonts/geist-mono/7170a9ec07b3758b.ttf",
+      "/fonts/geist-mono/3846c19bc36bee47.ttf",
+      "/fonts/geist-mono/f7d2961b86bf81b7.ttf",
+      "/fonts/geist-mono/dd9a1dcfdcaf8784.ttf"
+    ],
+    "weights": [
+      100,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/geistmono/OFL.txt"
+  },
+  {
+    "family": "IBM Plex Sans",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/IBM+Plex+Sans",
+    "css": "/fonts/ibm-plex-sans/font.css",
+    "files": [
+      "/fonts/ibm-plex-sans/5a15af0e02024677.ttf",
+      "/fonts/ibm-plex-sans/3495a9299c0a6036.ttf",
+      "/fonts/ibm-plex-sans/e78ac241901e313f.ttf",
+      "/fonts/ibm-plex-sans/b05231b0cba19256.ttf",
+      "/fonts/ibm-plex-sans/f235a2cb1105afb5.ttf",
+      "/fonts/ibm-plex-sans/511240f4addd8d06.ttf",
+      "/fonts/ibm-plex-sans/332a8e39927c7a9f.ttf",
+      "/fonts/ibm-plex-sans/504da0ec440359b3.ttf",
+      "/fonts/ibm-plex-sans/751846d948d19902.ttf",
+      "/fonts/ibm-plex-sans/a3a74cc1b1d04368.ttf",
+      "/fonts/ibm-plex-sans/1a9cad03d35e9bb1.ttf",
+      "/fonts/ibm-plex-sans/b9122df809d9d920.ttf",
+      "/fonts/ibm-plex-sans/8da5dfcdccfbe404.ttf",
+      "/fonts/ibm-plex-sans/9ba92c9bda672730.ttf"
+    ],
+    "weights": [
+      100,
+      700
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsans/OFL.txt"
+  },
+  {
+    "family": "Inconsolata",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Inconsolata",
+    "css": "/fonts/inconsolata/font.css",
+    "files": [
+      "/fonts/inconsolata/6542fc1922e0c241.ttf",
+      "/fonts/inconsolata/4c1d65a6d1b095b0.ttf",
+      "/fonts/inconsolata/3ea4986857891396.ttf",
+      "/fonts/inconsolata/862667a817847348.ttf",
+      "/fonts/inconsolata/3ef0d73756297274.ttf",
+      "/fonts/inconsolata/bb78664a089e7f6a.ttf",
+      "/fonts/inconsolata/ccd3ef9b0d84a8c6.ttf",
+      "/fonts/inconsolata/aa9c732f6df237b4.ttf"
+    ],
+    "weights": [
+      200,
+      900
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/inconsolata/OFL.txt"
+  },
+  {
+    "family": "Instrument Serif",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Instrument+Serif",
+    "css": "/fonts/instrument-serif/font.css",
+    "files": [
+      "/fonts/instrument-serif/7e0a56187ecaff85.ttf",
+      "/fonts/instrument-serif/c1e7453ea26a1d1e.ttf"
+    ],
+    "weights": [
+      400
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/OFL.txt"
+  },
+  {
+    "family": "Inter",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Inter",
+    "css": "/fonts/inter/font.css",
+    "files": [
+      "/fonts/inter/cfc1ad02e91c1f73.ttf",
+      "/fonts/inter/e8f4f237d14eb97e.ttf",
+      "/fonts/inter/acdf0c64fdcf14b5.ttf",
+      "/fonts/inter/abd281d0dad14338.ttf",
+      "/fonts/inter/f3a0eb876d546f71.ttf",
+      "/fonts/inter/ac0bffb8676d0c1a.ttf",
+      "/fonts/inter/da92c6a83bd0472b.ttf",
+      "/fonts/inter/85e0e8e4a47ba722.ttf",
+      "/fonts/inter/981d8432eb23e81b.ttf",
+      "/fonts/inter/da69e5d9e9576d30.ttf",
+      "/fonts/inter/2d5523b07e76b595.ttf",
+      "/fonts/inter/ee9558be9f8a4d75.ttf",
+      "/fonts/inter/a699af1dea30b799.ttf",
+      "/fonts/inter/e45972c7e9f24dc3.ttf",
+      "/fonts/inter/87e867b52640b3b3.ttf",
+      "/fonts/inter/6f49e1b28bce7339.ttf",
+      "/fonts/inter/2f6c206f7c744148.ttf",
+      "/fonts/inter/861da2b4255e09a6.ttf"
+    ],
+    "weights": [
+      100,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt"
+  },
+  {
+    "family": "Inter Tight",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Inter+Tight",
+    "css": "/fonts/inter-tight/font.css",
+    "files": [
+      "/fonts/inter-tight/44550fabd6a55194.ttf",
+      "/fonts/inter-tight/68b367f68e9af225.ttf",
+      "/fonts/inter-tight/c37fef85e189e8ff.ttf",
+      "/fonts/inter-tight/441ef0e61bc1e442.ttf",
+      "/fonts/inter-tight/d87533cac88184d1.ttf",
+      "/fonts/inter-tight/75bea28ecbef9ac6.ttf",
+      "/fonts/inter-tight/00a3eeb3cbb442b6.ttf",
+      "/fonts/inter-tight/605e76182ce01332.ttf",
+      "/fonts/inter-tight/9b257ff911178602.ttf",
+      "/fonts/inter-tight/e9c6e3bdc62099b6.ttf",
+      "/fonts/inter-tight/340763be4ea4311c.ttf",
+      "/fonts/inter-tight/1ec94267de47c192.ttf",
+      "/fonts/inter-tight/42aaaf7a68ce5eb5.ttf",
+      "/fonts/inter-tight/ba08b16a00221416.ttf",
+      "/fonts/inter-tight/722ff42d0080d150.ttf",
+      "/fonts/inter-tight/3ff89d14ef3d3641.ttf",
+      "/fonts/inter-tight/b2dd8b5211efd1e8.ttf",
+      "/fonts/inter-tight/ff98febdd9d848ba.ttf"
+    ],
+    "weights": [
+      100,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/intertight/OFL.txt"
+  },
+  {
+    "family": "JetBrains Mono",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/JetBrains+Mono",
+    "css": "/fonts/jetbrains-mono/font.css",
+    "files": [
+      "/fonts/jetbrains-mono/407f551cd6eab89d.ttf",
+      "/fonts/jetbrains-mono/8cdb8fdaad0072f4.ttf",
+      "/fonts/jetbrains-mono/10a2db2b4f2467d0.ttf",
+      "/fonts/jetbrains-mono/8a16071270fd8d41.ttf",
+      "/fonts/jetbrains-mono/8e656f506864a215.ttf",
+      "/fonts/jetbrains-mono/b85424b49e5b4a6e.ttf",
+      "/fonts/jetbrains-mono/7029837dc9f88ccc.ttf",
+      "/fonts/jetbrains-mono/166a964210cc6404.ttf",
+      "/fonts/jetbrains-mono/7109d828b1b0c129.ttf",
+      "/fonts/jetbrains-mono/7528dadceedc59c2.ttf",
+      "/fonts/jetbrains-mono/b95b576b0912b261.ttf",
+      "/fonts/jetbrains-mono/6d83b1a12212ea9e.ttf",
+      "/fonts/jetbrains-mono/655ecee898b68ff3.ttf",
+      "/fonts/jetbrains-mono/5f6675d606a21f26.ttf",
+      "/fonts/jetbrains-mono/c1c656933a1f4b14.ttf",
+      "/fonts/jetbrains-mono/32bf30e94c6c5d0b.ttf"
+    ],
+    "weights": [
+      100,
+      800
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/jetbrainsmono/OFL.txt"
+  },
+  {
+    "family": "Lora",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Lora",
+    "css": "/fonts/lora/font.css",
+    "files": [
+      "/fonts/lora/7b56c437cef01b08.ttf",
+      "/fonts/lora/c4d4b582010522e2.ttf",
+      "/fonts/lora/b23c9df63bf49d3b.ttf",
+      "/fonts/lora/8a8a17b3b2f2ac83.ttf",
+      "/fonts/lora/c8f8c7f5ed539bb4.ttf",
+      "/fonts/lora/26bad053b5abef0e.ttf",
+      "/fonts/lora/9c2c504c5bf6914e.ttf",
+      "/fonts/lora/33605a4217326af4.ttf"
+    ],
+    "weights": [
+      400,
+      700
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/lora/OFL.txt"
+  },
+  {
+    "family": "Manrope",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Manrope",
+    "css": "/fonts/manrope/font.css",
+    "files": [
+      "/fonts/manrope/3f6a66e09ce7a6f4.ttf",
+      "/fonts/manrope/12ffff5404d61b27.ttf",
+      "/fonts/manrope/755fa076675e6f61.ttf",
+      "/fonts/manrope/e6fa40b6715a310a.ttf",
+      "/fonts/manrope/900670474e93d412.ttf",
+      "/fonts/manrope/e7e0cf40cb44208e.ttf",
+      "/fonts/manrope/0404e9f6404a474c.ttf"
+    ],
+    "weights": [
+      200,
+      800
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt"
+  },
+  {
+    "family": "Mona Sans",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Mona+Sans",
+    "css": "/fonts/mona-sans/font.css",
+    "files": [
+      "/fonts/mona-sans/e345609738242409.ttf",
+      "/fonts/mona-sans/55f4dc0338eab195.ttf",
+      "/fonts/mona-sans/3f7783a9274e2462.ttf",
+      "/fonts/mona-sans/f05d73cb31c1ca4e.ttf",
+      "/fonts/mona-sans/57b5d4ae953d73a2.ttf",
+      "/fonts/mona-sans/f4cd54d4eadb9fd4.ttf",
+      "/fonts/mona-sans/24cd87f0f7c4c07b.ttf",
+      "/fonts/mona-sans/a4826581a0fe29d0.ttf",
+      "/fonts/mona-sans/afbabc493862ee38.ttf",
+      "/fonts/mona-sans/7dd4cb594ba2ff3b.ttf",
+      "/fonts/mona-sans/8b671e0bc5a1bb2c.ttf",
+      "/fonts/mona-sans/be5810aad11a6060.ttf",
+      "/fonts/mona-sans/f494923440e88fb3.ttf",
+      "/fonts/mona-sans/77501d0ee1a66e36.ttf",
+      "/fonts/mona-sans/936e57731626211c.ttf",
+      "/fonts/mona-sans/8fed886c0b053e89.ttf"
+    ],
+    "weights": [
+      200,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/monasans/OFL.txt"
+  },
+  {
+    "family": "Newsreader",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Newsreader",
+    "css": "/fonts/newsreader/font.css",
+    "files": [
+      "/fonts/newsreader/fef6470d1e970687.ttf",
+      "/fonts/newsreader/463b9785306ce85e.ttf",
+      "/fonts/newsreader/289d2aa8e0ed6731.ttf",
+      "/fonts/newsreader/e365077394b3cd59.ttf",
+      "/fonts/newsreader/c9a12dfcdb6c891d.ttf",
+      "/fonts/newsreader/c26be72c2550b66f.ttf",
+      "/fonts/newsreader/7b746e52d1dceca8.ttf",
+      "/fonts/newsreader/f413cefda1a1091b.ttf",
+      "/fonts/newsreader/dfe936d7a3e5c58f.ttf",
+      "/fonts/newsreader/d6c65600eb0149bc.ttf",
+      "/fonts/newsreader/3208926ba69d6886.ttf",
+      "/fonts/newsreader/151ae355673a2936.ttf",
+      "/fonts/newsreader/33e1f2853df3544d.ttf",
+      "/fonts/newsreader/6fda6170844e09c2.ttf"
+    ],
+    "weights": [
+      200,
+      800
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt"
+  },
+  {
+    "family": "Playfair Display",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Playfair+Display",
+    "css": "/fonts/playfair-display/font.css",
+    "files": [
+      "/fonts/playfair-display/d0e784ef034da1aa.ttf",
+      "/fonts/playfair-display/013fe10123fce329.ttf",
+      "/fonts/playfair-display/7d62dda1d3895620.ttf",
+      "/fonts/playfair-display/fb084c8b15e94383.ttf",
+      "/fonts/playfair-display/8fa83a056b0d36c0.ttf",
+      "/fonts/playfair-display/49159f810d4dc307.ttf",
+      "/fonts/playfair-display/5ae86d38cfa3525e.ttf",
+      "/fonts/playfair-display/f5a22007f7fe04ac.ttf",
+      "/fonts/playfair-display/c67a6241b1e0d6ae.ttf",
+      "/fonts/playfair-display/8a70c7995340f54c.ttf",
+      "/fonts/playfair-display/18ffac34dbf4b1d5.ttf",
+      "/fonts/playfair-display/d13e9daa375ab859.ttf"
+    ],
+    "weights": [
+      400,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/OFL.txt"
+  },
+  {
+    "family": "Roboto",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Roboto",
+    "css": "/fonts/roboto/font.css",
+    "files": [
+      "/fonts/roboto/bf2cc5bca80a00e2.ttf",
+      "/fonts/roboto/079478434027accb.ttf",
+      "/fonts/roboto/a24b3980a44f0208.ttf",
+      "/fonts/roboto/e4b43e86c005a136.ttf",
+      "/fonts/roboto/f285a18ad47c6511.ttf",
+      "/fonts/roboto/2bc362a1af22e934.ttf",
+      "/fonts/roboto/b5ecdf05ca9b481d.ttf",
+      "/fonts/roboto/65e80540f35175b6.ttf",
+      "/fonts/roboto/643910beef0de0c2.ttf",
+      "/fonts/roboto/efe1ff8d29a2a82e.ttf",
+      "/fonts/roboto/5d1e33d79e1ac490.ttf",
+      "/fonts/roboto/5639371f108fd32a.ttf",
+      "/fonts/roboto/d8dc5a5f3c90f50e.ttf",
+      "/fonts/roboto/c14c6f78e26d1c8e.ttf",
+      "/fonts/roboto/1732806670364de1.ttf",
+      "/fonts/roboto/17dbcf71ea4dcfbb.ttf",
+      "/fonts/roboto/47060fa093a14751.ttf",
+      "/fonts/roboto/c4c5cbe6fc321619.ttf"
+    ],
+    "weights": [
+      100,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/OFL.txt"
+  },
+  {
+    "family": "Rubik",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Rubik",
+    "css": "/fonts/rubik/font.css",
+    "files": [
+      "/fonts/rubik/079588e7f2ef9391.ttf",
+      "/fonts/rubik/d4d91ab684c954ac.ttf",
+      "/fonts/rubik/8177fb4c835b9ac9.ttf",
+      "/fonts/rubik/9621b3c64f075ea9.ttf",
+      "/fonts/rubik/76c93d5bd732b384.ttf",
+      "/fonts/rubik/bba825aa8ccd5f80.ttf",
+      "/fonts/rubik/1178adec49b313be.ttf",
+      "/fonts/rubik/f21d2ed782c72654.ttf",
+      "/fonts/rubik/bd541e2d7b7c712d.ttf",
+      "/fonts/rubik/ece9cb794bea716a.ttf",
+      "/fonts/rubik/f3dbce7be994996a.ttf",
+      "/fonts/rubik/4db42137a988032e.ttf",
+      "/fonts/rubik/536b4af8c047a76e.ttf",
+      "/fonts/rubik/31c16d4d9c6d63a9.ttf"
+    ],
+    "weights": [
+      300,
+      900
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubik/OFL.txt"
+  },
+  {
+    "family": "Saira Condensed",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Saira+Condensed",
+    "css": "/fonts/saira-condensed/font.css",
+    "files": [
+      "/fonts/saira-condensed/38e38b93e802c333.ttf",
+      "/fonts/saira-condensed/f5b994214574dd1d.ttf",
+      "/fonts/saira-condensed/29d49f08c888be89.ttf",
+      "/fonts/saira-condensed/1b2fb952099783ca.ttf",
+      "/fonts/saira-condensed/77ee53355e624d5e.ttf",
+      "/fonts/saira-condensed/050188bffab319e4.ttf",
+      "/fonts/saira-condensed/fa005d4fd3405206.ttf",
+      "/fonts/saira-condensed/6e0c740263f01354.ttf",
+      "/fonts/saira-condensed/31cda8a0a3ebd0db.ttf"
+    ],
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/sairacondensed/OFL.txt"
+  },
+  {
+    "family": "Space Grotesk",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Space+Grotesk",
+    "css": "/fonts/space-grotesk/font.css",
+    "files": [
+      "/fonts/space-grotesk/aab63435a01a8dd2.ttf",
+      "/fonts/space-grotesk/0dfc29fde7d95ca6.ttf",
+      "/fonts/space-grotesk/56632cca6632f379.ttf",
+      "/fonts/space-grotesk/d03f1389be8c7cea.ttf",
+      "/fonts/space-grotesk/aaf352f017a5007b.ttf"
+    ],
+    "weights": [
+      300,
+      700
+    ],
+    "italic": false,
+    "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt"
+  },
+  {
+    "family": "Tinos",
+    "provider": "Google Fonts",
+    "license": "Open-source font",
+    "url": "https://fonts.google.com/specimen/Tinos",
+    "css": "/fonts/tinos/font.css",
+    "files": [
+      "/fonts/tinos/d6e836b0080d81a9.ttf",
+      "/fonts/tinos/c54fc6af0c9727f9.ttf",
+      "/fonts/tinos/fbb8016179bd896a.ttf",
+      "/fonts/tinos/cb32a4babfb451b9.ttf"
+    ],
+    "weights": [
+      400,
+      700
+    ],
+    "italic": true,
+    "licenseSource": "https://raw.githubusercontent.com/googlefonts/tinos/main/OFL.txt"
+  }
+]

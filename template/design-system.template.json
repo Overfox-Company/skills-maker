@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": {
+    "id": "",
+    "name": "",
+    "description": "",
+    "source": {
+      "file": "",
+      "format": "yaml+markdown|markdown|generated"
+    }
+  },
+  "design": {
+    "overview": [
+
+    ],
+    "principles": [
+
+    ],
+    "signatureElements": [
+
+    ]
+  },
+  "colors": {
+    "tokens": {
+    },
+    "guidance": [
+
+    ]
+  },
+  "typography": {
+    "publicFontsOnly": true,
+    "families": [
+
+    ],
+    "styles": {
+    },
+    "substitutionAdjustment": null,
+    "guidance": [
+
+    ]
+  },
+  "layout": {
+    "spacing": {
+    },
+    "spacingValues": [
+
+    ],
+    "gridAndContainers": [
+
+    ],
+    "responsive": {
+      "breakpoints": [
+
+      ],
+      "guidance": [
+
+      ]
+    }
+  },
+  "shape": {
+    "radii": {
+    },
+    "radiusValues": [
+
+    ],
+    "guidance": [
+
+    ]
+  },
+  "elevation": {
+    "tokens": {
+    },
+    "guidance": [
+
+    ]
+  },
+  "components": {
+    "tokens": {
+    },
+    "guidance": [
+
+    ]
+  },
+  "imagery": {
+    "guidance": [
+
+    ]
+  },
+  "motion": {
+    "guidance": [
+
+    ]
+  },
+  "content": {
+    "hierarchy": [
+
+    ],
+    "voiceAndTone": [
+
+    ]
+  },
+  "useCases": {
+    "recommended": [
+
+    ],
+    "avoid": [
+
+    ]
+  },
+  "agentGuidance": {
+    "promptGuide": [
+
+    ],
+    "iterationGuide": [
+
+    ]
+  },
+  "knownGaps": [
+
+  ],
+  "additionalGuidance": [
+
+  ]
+}

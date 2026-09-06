@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/38e38b93e802c333.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/f5b994214574dd1d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/29d49f08c888be89.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/1b2fb952099783ca.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/77ee53355e624d5e.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/050188bffab319e4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/fa005d4fd3405206.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/6e0c740263f01354.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(/fonts/saira-condensed/31cda8a0a3ebd0db.ttf) format('truetype');
+}

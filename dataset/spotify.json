@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": {
+    "id": "spotify",
+    "name": "Spotify",
+    "description": "Spotify's web interface is a dark, immersive music player that wraps listeners in a near-black cocoon (`#121212`, `#181818`, `#1f1f1f`) where album art and content become the primary source of color. The design philosophy is \"content-first darkness\" — the UI recedes into shadow so that music, podcasts, and playlists can glow. Every surface is a shade of charcoal, creating a theater-like environment where the only true color comes from the iconic Spotify Green (`#1ed760`) and the album artwork itself.\n\nThe typography uses DM Sans and DM SansTitle — source-specific fonts from the InterSp family (Inter by Lineto, customized for Spotify) with an extensive fallback stack that includes Arabic, Hebrew, Cyrillic, Greek, Devanagari, and CJK fonts, reflecting Spotify's global reach. The type system is compact and functional: 700 (bold) for emphasis and navigation, 600 (semibold) for secondary emphasis, and 400 (regular) for body. Buttons use uppercase with positive letter-spacing (1.4px–2px) for a systematic, label-like quality.\n\nWhat distinguishes Spotify is its pill-and-circle geometry. Primary buttons use 500px–9999px radius (full pill), Inter play buttons use 50% radius, and search inputs are 500px pills. Combined with heavy shadows (`rgba(0,0,0,0.5) 0px 8px 24px`) on elevated elements and a unique inset border-shadow combo (`rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset`), the result is an interface that feels like a premium audio device — tactile, rounded, and built for touch.\n\n**Key Characteristics:**\n- Near-black immersive dark theme (`#121212`–`#1f1f1f`) — UI disappears behind content\n- Spotify Green (`#1ed760`) as singular brand accent — never decorative, always functional\n- DM Sans/InterSp font family with global script support\n- Pill buttons (500px–9999px) and Inter controls (50%) — rounded, touch-optimized\n- Uppercase button labels with wide letter-spacing (1.4px–2px)\n- Heavy shadows on elevated elements (`rgba(0,0,0,0.5) 0px 8px 24px`)\n- Semantic colors: negative red (`#f3727f`), warning orange (`#ffa42b`), announcement blue (`#539df5`)\n- Album art as the primary color source — the UI is achromatic by design",
+    "source": {
+      "file": "/Users/joel/Documents/aw skills/design-md/spotify/DESIGN.md",
+      "format": "markdown"
+    }
+  },
+  "design": {
+    "overview": [
+      {
+        "section": "Design System Inspired by Spotify > 1. Visual Theme & Atmosphere",
+        "content": "Spotify's web interface is a dark, immersive music player that wraps listeners in a near-black cocoon (`#121212`, `#181818`, `#1f1f1f`) where album art and content become the primary source of color. The design philosophy is \"content-first darkness\" — the UI recedes into shadow so that music, podcasts, and playlists can glow. Every surface is a shade of charcoal, creating a theater-like environment where the only true color comes from the iconic Spotify Green (`#1ed760`) and the album artwork itself.\n\nThe typography uses DM Sans and DM SansTitle — source-specific fonts from the InterSp family (Inter by Lineto, customized for Spotify) with an extensive fallback stack that includes Arabic, Hebrew, Cyrillic, Greek, Devanagari, and CJK fonts, reflecting Spotify's global reach. The type system is compact and functional: 700 (bold) for emphasis and navigation, 600 (semibold) for secondary emphasis, and 400 (regular) for body. Buttons use uppercase with positive letter-spacing (1.4px–2px) for a systematic, label-like quality.\n\nWhat distinguishes Spotify is its pill-and-circle geometry. Primary buttons use 500px–9999px radius (full pill), Inter play buttons use 50% radius, and search inputs are 500px pills. Combined with heavy shadows (`rgba(0,0,0,0.5) 0px 8px 24px`) on elevated elements and a unique inset border-shadow combo (`rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset`), the result is an interface that feels like a premium audio device — tactile, rounded, and built for touch.\n\n**Key Characteristics:**\n- Near-black immersive dark theme (`#121212`–`#1f1f1f`) — UI disappears behind content\n- Spotify Green (`#1ed760`) as singular brand accent — never decorative, always functional\n- DM Sans/InterSp font family with global script support\n- Pill buttons (500px–9999px) and Inter controls (50%) — rounded, touch-optimized\n- Uppercase button labels with wide letter-spacing (1.4px–2px)\n- Heavy shadows on elevated elements (`rgba(0,0,0,0.5) 0px 8px 24px`)\n- Semantic colors: negative red (`#f3727f`), warning orange (`#ffa42b`), announcement blue (`#539df5`)\n- Album art as the primary color source — the UI is achromatic by design"
+      }
+    ],
+    "principles": [
+      "**Bold/regular binary**: Most text is either 700 (bold) or 400 (regular), with 600 used sparingly. This creates a clear visual hierarchy through weight contrast rather than size variation.",
+      "**Uppercase buttons as system**: Button labels use uppercase + wide letter-spacing (1.4px–2px), creating a systematic \"label\" voice distinct from content text.",
+      "**Compact sizing**: The range is 10px–24px — narrower than most systems. Spotify's type is compact and functional, designed for scanning playlists, not reading articles.",
+      "**Global script support**: The extensive fallback stack (Arabic, Hebrew, Cyrillic, Greek, Devanagari, CJK) reflects Spotify's 180+ market reach.",
+      "Base unit: 8px",
+      "Scale: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 14px, 15px, 16px, 20px",
+      "Sidebar (fixed) + main content area",
+      "Grid-based album/playlist cards",
+      "Full-width now-playing bar at bottom",
+      "Responsive content area fills remaining space",
+      "**Dark compression**: Spotify packs content densely — playlist grids, track lists, and navigation are all tightly spaced. The dark background provides visual rest between elements without needing large gaps.",
+      "**Content density over breathing room**: This is an app, not a marketing site. Every pixel serves the listening experience.",
+      "Minimal (2px): Badges, explicit tags",
+      "Subtle (4px): Inputs, small elements",
+      "Standard (6px): Album art containers, cards",
+      "Comfortable (8px): Sections, dialogs",
+      "Medium (10px–20px): Panels, overlay elements",
+      "Large (100px): Large pill buttons",
+      "Pill (500px): Primary buttons, search input",
+      "Full Pill (9999px): Navigation pills, search",
+      "Circle (50%): Play buttons, avatars, icons"
+    ],
+    "signatureElements": [
+
+    ]
+  },
+  "colors": {
+    "tokens": {
+      "spotify-green": "#1ed760",
+      "near-black": "#121212",
+      "dark-surface": "#181818",
+      "mid-dark": "#1f1f1f",
+      "white": "#ffffff",
+      "silver": "#b3b3b3",
+      "near-white": "#cbcbcb",
+      "light": "#fdfdfd",
+      "negative-red": "#f3727f",
+      "warning-orange": "#ffa42b",
+      "announcement-blue": "#539df5",
+      "dark-card": "#252525",
+      "mid-card": "#272727",
+      "border-gray": "#4d4d4d",
+      "light-border": "#7c7c7c",
+      "separator": "#b3b3b3",
+      "light-surface": "#eeeeee",
+      "spotify-green-border": "#1db954",
+      "heavy": "rgba(0,0,0,0.5)",
+      "medium": "rgba(0,0,0,0.3)",
+      "inset-border": "rgb(18,18,18)",
+      "background": "#121212",
+      "surface": "#181818",
+      "text": "#ffffff",
+      "secondary-text": "#b3b3b3",
+      "accent": "#1ed760",
+      "border": "#4d4d4d",
+      "error": "#f3727f"
+    },
+    "guidance": [
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Primary Brand",
+        "content": "- **Spotify Green** (`#1ed760`): Primary brand accent — play buttons, active states, CTAs\n- **Near Black** (`#121212`): Deepest background surface\n- **Dark Surface** (`#181818`): Cards, containers, elevated surfaces\n- **Mid Dark** (`#1f1f1f`): Button backgrounds, interactive surfaces"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Text",
+        "content": "- **White** (`#ffffff`): `--text-base`, primary text\n- **Silver** (`#b3b3b3`): Secondary text, muted labels, inactive nav\n- **Near White** (`#cbcbcb`): Slightly brighter secondary text\n- **Light** (`#fdfdfd`): Near-pure white for maximum emphasis"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Semantic",
+        "content": "- **Negative Red** (`#f3727f`): `--text-negative`, error states\n- **Warning Orange** (`#ffa42b`): `--text-warning`, warning states\n- **Announcement Blue** (`#539df5`): `--text-announcement`, info states"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Surface & Border",
+        "content": "- **Dark Card** (`#252525`): Elevated card surface\n- **Mid Card** (`#272727`): Alternate card surface\n- **Border Gray** (`#4d4d4d`): Button borders on dark\n- **Light Border** (`#7c7c7c`): Outlined button borders, muted links\n- **Separator** (`#b3b3b3`): Divider lines\n- **Light Surface** (`#eeeeee`): Light-mode buttons (rare)\n- **Spotify Green Border** (`#1db954`): Green accent border variant"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Shadows",
+        "content": "- **Heavy** (`rgba(0,0,0,0.5) 0px 8px 24px`): Dialogs, menus, elevated panels\n- **Medium** (`rgba(0,0,0,0.3) 0px 8px 8px`): Cards, dropdowns\n- **Inset Border** (`rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset`): Input border-shadow combo"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Quick Color Reference",
+        "content": "- Background: Near Black (`#121212`)\n- Surface: Dark Card (`#181818`)\n- Text: White (`#ffffff`)\n- Secondary text: Silver (`#b3b3b3`)\n- Accent: Spotify Green (`#1ed760`)\n- Border: `#4d4d4d`\n- Error: Negative Red (`#f3727f`)"
+      }
+    ]
+  },
+  "typography": {
+    "publicFontsOnly": true,
+    "families": [
+      {
+        "family": "DM Sans",
+        "provider": "Google Fonts",
+        "license": "Open-source font",
+        "url": "https://fonts.google.com/specimen/DM+Sans"
+      }
+    ],
+    "styles": {
+      "section-title": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "24px (1.50rem)",
+        "fontWeight": "700",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "feature-heading": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "18px (1.13rem)",
+        "fontWeight": "600",
+        "lineHeight": "1.30 (tight)",
+        "letterSpacing": "normal"
+      },
+      "body-bold": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "16px (1.00rem)",
+        "fontWeight": "700",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "body": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "16px (1.00rem)",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "button-uppercase": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "600–700",
+        "lineHeight": "1.00 (tight)",
+        "letterSpacing": "1.4px–2px"
+      },
+      "button": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "700",
+        "lineHeight": "normal",
+        "letterSpacing": "0.14px"
+      },
+      "nav-link-bold": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "700",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "nav-link": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "caption-bold": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "700",
+        "lineHeight": "1.50–1.54",
+        "letterSpacing": "normal"
+      },
+      "caption": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "14px (0.88rem)",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "small-bold": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "12px (0.75rem)",
+        "fontWeight": "700",
+        "lineHeight": "1.50",
+        "letterSpacing": "normal"
+      },
+      "small": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "12px (0.75rem)",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "badge": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "10.5px (0.66rem)",
+        "fontWeight": "600",
+        "lineHeight": "1.33",
+        "letterSpacing": "normal"
+      },
+      "micro": {
+        "fontFamily": "DM Sans, sans-serif",
+        "fontSize": "10px (0.63rem)",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      }
+    },
+    "substitutionAdjustment": null,
+    "guidance": [
+      {
+        "section": "Design System Inspired by Spotify > 3. Typography Rules > Font Families",
+        "content": "- **Title**: `DM SansTitle`, fallbacks: `InterSp-Arab, InterSp-Hebr, InterSp-Cyrl, InterSp-Grek, InterSp-Deva, Arimo, Arimo, Arimo, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, MS Gothic`\n- **UI / Body**: `DM Sans`, same fallback stack"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 3. Typography Rules > Hierarchy",
+        "content": "| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |\n|------|------|------|--------|-------------|----------------|-------|\n| Section Title | DM SansTitle | 24px (1.50rem) | 700 | normal | normal | Bold title weight |\n| Feature Heading | DM Sans | 18px (1.13rem) | 600 | 1.30 (tight) | normal | Semibold section heads |\n| Body Bold | DM Sans | 16px (1.00rem) | 700 | normal | normal | Emphasized text |\n| Body | DM Sans | 16px (1.00rem) | 400 | normal | normal | Standard body |\n| Button Uppercase | DM Sans | 14px (0.88rem) | 600–700 | 1.00 (tight) | 1.4px–2px | `text-transform: uppercase` |\n| Button | DM Sans | 14px (0.88rem) | 700 | normal | 0.14px | Standard button |\n| Nav Link Bold | DM Sans | 14px (0.88rem) | 700 | normal | normal | Navigation |\n| Nav Link | DM Sans | 14px (0.88rem) | 400 | normal | normal | Inactive nav |\n| Caption Bold | DM Sans | 14px (0.88rem) | 700 | 1.50–1.54 | normal | Bold metadata |\n| Caption | DM Sans | 14px (0.88rem) | 400 | normal | normal | Metadata |\n| Small Bold | DM Sans | 12px (0.75rem) | 700 | 1.50 | normal | Tags, counts |\n| Small | DM Sans | 12px (0.75rem) | 400 | normal | normal | Fine print |\n| Badge | DM Sans | 10.5px (0.66rem) | 600 | 1.33 | normal | `text-transform: capitalize` |\n| Micro | DM Sans | 10px (0.63rem) | 400 | normal | normal | Smallest text |"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 3. Typography Rules > Principles",
+        "content": "- **Bold/regular binary**: Most text is either 700 (bold) or 400 (regular), with 600 used sparingly. This creates a clear visual hierarchy through weight contrast rather than size variation.\n- **Uppercase buttons as system**: Button labels use uppercase + wide letter-spacing (1.4px–2px), creating a systematic \"label\" voice distinct from content text.\n- **Compact sizing**: The range is 10px–24px — narrower than most systems. Spotify's type is compact and functional, designed for scanning playlists, not reading articles.\n- **Global script support**: The extensive fallback stack (Arabic, Hebrew, Cyrillic, Greek, Devanagari, CJK) reflects Spotify's 180+ market reach."
+      }
+    ]
+  },
+  "layout": {
+    "spacing": {
+    },
+    "spacingValues": [
+      "8px",
+      "1px",
+      "2px",
+      "3px",
+      "4px",
+      "5px",
+      "6px",
+      "10px",
+      "12px",
+      "14px",
+      "15px",
+      "16px",
+      "20px"
+    ],
+    "gridAndContainers": [
+      {
+        "section": "Design System Inspired by Spotify > 4. Component Stylings > Cards & Containers",
+        "content": "- Background: `#181818` or `#1f1f1f`\n- Radius: 6px–8px\n- No visible borders on most cards\n- Hover: slight background lightening\n- Shadow: `rgba(0,0,0,0.3) 0px 8px 8px` on elevated"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 5. Layout Principles > Spacing System",
+        "content": "- Base unit: 8px\n- Scale: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 14px, 15px, 16px, 20px"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 5. Layout Principles > Grid & Container",
+        "content": "- Sidebar (fixed) + main content area\n- Grid-based album/playlist cards\n- Full-width now-playing bar at bottom\n- Responsive content area fills remaining space"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 5. Layout Principles > Whitespace Philosophy",
+        "content": "- **Dark compression**: Spotify packs content densely — playlist grids, track lists, and navigation are all tightly spaced. The dark background provides visual rest between elements without needing large gaps.\n- **Content density over breathing room**: This is an app, not a marketing site. Every pixel serves the listening experience."
+      },
+      {
+        "section": "Design System Inspired by Spotify > 5. Layout Principles > Border Radius Scale",
+        "content": "- Minimal (2px): Badges, explicit tags\n- Subtle (4px): Inputs, small elements\n- Standard (6px): Album art containers, cards\n- Comfortable (8px): Sections, dialogs\n- Medium (10px–20px): Panels, overlay elements\n- Large (100px): Large pill buttons\n- Pill (500px): Primary buttons, search input\n- Full Pill (9999px): Navigation pills, search\n- Circle (50%): Play buttons, avatars, icons"
+      }
+    ],
+    "responsive": {
+      "breakpoints": [
+        "425px",
+        "576px",
+        "768px",
+        "896px",
+        "1024px",
+        "1280px"
+      ],
+      "guidance": [
+        {
+          "section": "Design System Inspired by Spotify > 8. Responsive Behavior > Breakpoints",
+          "content": "| Name | Width | Key Changes |\n|------|-------|-------------|\n| Mobile Small | <425px | Compact mobile layout |\n| Mobile | 425–576px | Standard mobile |\n| Tablet | 576–768px | 2-column grid |\n| Tablet Large | 768–896px | Expanded layout |\n| Desktop Small | 896–1024px | Sidebar visible |\n| Desktop | 1024–1280px | Full desktop layout |\n| Large Desktop | >1280px | Expanded grid |"
+        },
+        {
+          "section": "Design System Inspired by Spotify > 8. Responsive Behavior > Collapsing Strategy",
+          "content": "- Sidebar: full → collapsed → hidden\n- Album grid: 5 columns → 3 → 2 → 1\n- Now-playing bar: maintained at all sizes\n- Search: pill input maintained, width adjusts\n- Navigation: sidebar → bottom bar on mobile"
+        }
+      ]
+    }
+  },
+  "shape": {
+    "radii": {
+    },
+    "radiusValues": [
+      "2px",
+      "4px",
+      "6px",
+      "8px",
+      "10px",
+      "20px",
+      "100px",
+      "500px",
+      "9999px"
+    ],
+    "guidance": [
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Surface & Border",
+        "content": "- **Dark Card** (`#252525`): Elevated card surface\n- **Mid Card** (`#272727`): Alternate card surface\n- **Border Gray** (`#4d4d4d`): Button borders on dark\n- **Light Border** (`#7c7c7c`): Outlined button borders, muted links\n- **Separator** (`#b3b3b3`): Divider lines\n- **Light Surface** (`#eeeeee`): Light-mode buttons (rare)\n- **Spotify Green Border** (`#1db954`): Green accent border variant"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 5. Layout Principles > Border Radius Scale",
+        "content": "- Minimal (2px): Badges, explicit tags\n- Subtle (4px): Inputs, small elements\n- Standard (6px): Album art containers, cards\n- Comfortable (8px): Sections, dialogs\n- Medium (10px–20px): Panels, overlay elements\n- Large (100px): Large pill buttons\n- Pill (500px): Primary buttons, search input\n- Full Pill (9999px): Navigation pills, search\n- Circle (50%): Play buttons, avatars, icons"
+      }
+    ]
+  },
+  "elevation": {
+    "tokens": {
+    },
+    "guidance": [
+      {
+        "section": "Design System Inspired by Spotify > 2. Color Palette & Roles > Shadows",
+        "content": "- **Heavy** (`rgba(0,0,0,0.5) 0px 8px 24px`): Dialogs, menus, elevated panels\n- **Medium** (`rgba(0,0,0,0.3) 0px 8px 8px`): Cards, dropdowns\n- **Inset Border** (`rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset`): Input border-shadow combo"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 6. Depth & Elevation",
+        "content": "| Level | Treatment | Use |\n|-------|-----------|-----|\n| Base (Level 0) | `#121212` background | Deepest layer, page background |\n| Surface (Level 1) | `#181818` or `#1f1f1f` | Cards, sidebar, containers |\n| Elevated (Level 2) | `rgba(0,0,0,0.3) 0px 8px 8px` | Dropdown menus, hover cards |\n| Dialog (Level 3) | `rgba(0,0,0,0.5) 0px 8px 24px` | Modals, overlays, menus |\n| Inset (Border) | `rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset` | Input borders |\n\n**Shadow Philosophy**: Spotify uses notably heavy shadows for a dark-themed app. The 0.5 opacity shadow at 24px blur creates a dramatic \"floating in darkness\" effect for dialogs and menus, while the 0.3 opacity at 8px blur provides a more subtle card lift. The unique inset border-shadow combination on inputs creates a recessed, tactile quality."
+      }
+    ]
+  },
+  "components": {
+    "tokens": {
+    },
+    "guidance": [
+      {
+        "section": "Design System Inspired by Spotify > 4. Component Stylings > Buttons",
+        "content": "**Dark Pill**\n- Background: `#1f1f1f`\n- Text: `#ffffff` or `#b3b3b3`\n- Padding: 8px 16px\n- Radius: 9999px (full pill)\n- Use: Navigation pills, secondary actions\n\n**Dark Large Pill**\n- Background: `#181818`\n- Text: `#ffffff`\n- Padding: 0px 43px\n- Radius: 500px\n- Use: Primary app navigation buttons\n\n**Light Pill**\n- Background: `#eeeeee`\n- Text: `#181818`\n- Radius: 500px\n- Use: Light-mode CTAs (cookie consent, marketing)\n\n**Outlined Pill**\n- Background: transparent\n- Text: `#ffffff`\n- Border: `1px solid #7c7c7c`\n- Padding: 4px 16px 4px 36px (asymmetric for icon)\n- Radius: 9999px\n- Use: Follow buttons, secondary actions\n\n**Inter Play**\n- Background: `#1f1f1f`\n- Text: `#ffffff`\n- Padding: 12px\n- Radius: 50% (circle)\n- Use: Play/pause controls"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 4. Component Stylings > Cards & Containers",
+        "content": "- Background: `#181818` or `#1f1f1f`\n- Radius: 6px–8px\n- No visible borders on most cards\n- Hover: slight background lightening\n- Shadow: `rgba(0,0,0,0.3) 0px 8px 8px` on elevated"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 4. Component Stylings > Inputs",
+        "content": "- Search input: `#1f1f1f` background, `#ffffff` text\n- Radius: 500px (pill)\n- Padding: 12px 96px 12px 48px (icon-aware)\n- Focus: border becomes `#000000`, outline `1px solid`"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 4. Component Stylings > Navigation",
+        "content": "- Dark sidebar with DM Sans 14px weight 700 for active, 400 for inactive\n- `#b3b3b3` muted color for inactive items, `#ffffff` for active\n- Inter icon buttons (50% radius)\n- Spotify logo top-left in green"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Example Component Prompts",
+        "content": "- \"Create a dark card: #181818 background, 8px radius. Title at 16px DM Sans weight 700, white text. Subtitle at 14px weight 400, #b3b3b3. Shadow rgba(0,0,0,0.3) 0px 8px 8px on hover.\"\n- \"Design a pill button: #1f1f1f background, white text, 9999px radius, 8px 16px padding. 14px DM Sans weight 700, uppercase, letter-spacing 1.4px.\"\n- \"Build a Inter play button: Spotify Green (#1ed760) background, #000000 icon, 50% radius, 12px padding.\"\n- \"Create search input: #1f1f1f background, white text, 500px radius, 12px 48px padding. Inset border: rgb(124,124,124) 0px 0px 0px 1px inset.\"\n- \"Design navigation sidebar: #121212 background. Active items: 14px weight 700, white. Inactive: 14px weight 400, #b3b3b3.\""
+      }
+    ]
+  },
+  "imagery": {
+    "guidance": [
+
+    ]
+  },
+  "motion": {
+    "guidance": [
+
+    ]
+  },
+  "content": {
+    "hierarchy": [
+      {
+        "section": "Design System Inspired by Spotify > 3. Typography Rules > Hierarchy",
+        "content": "| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |\n|------|------|------|--------|-------------|----------------|-------|\n| Section Title | DM SansTitle | 24px (1.50rem) | 700 | normal | normal | Bold title weight |\n| Feature Heading | DM Sans | 18px (1.13rem) | 600 | 1.30 (tight) | normal | Semibold section heads |\n| Body Bold | DM Sans | 16px (1.00rem) | 700 | normal | normal | Emphasized text |\n| Body | DM Sans | 16px (1.00rem) | 400 | normal | normal | Standard body |\n| Button Uppercase | DM Sans | 14px (0.88rem) | 600–700 | 1.00 (tight) | 1.4px–2px | `text-transform: uppercase` |\n| Button | DM Sans | 14px (0.88rem) | 700 | normal | 0.14px | Standard button |\n| Nav Link Bold | DM Sans | 14px (0.88rem) | 700 | normal | normal | Navigation |\n| Nav Link | DM Sans | 14px (0.88rem) | 400 | normal | normal | Inactive nav |\n| Caption Bold | DM Sans | 14px (0.88rem) | 700 | 1.50–1.54 | normal | Bold metadata |\n| Caption | DM Sans | 14px (0.88rem) | 400 | normal | normal | Metadata |\n| Small Bold | DM Sans | 12px (0.75rem) | 700 | 1.50 | normal | Tags, counts |\n| Small | DM Sans | 12px (0.75rem) | 400 | normal | normal | Fine print |\n| Badge | DM Sans | 10.5px (0.66rem) | 600 | 1.33 | normal | `text-transform: capitalize` |\n| Micro | DM Sans | 10px (0.63rem) | 400 | normal | normal | Smallest text |"
+      }
+    ],
+    "voiceAndTone": [
+
+    ]
+  },
+  "useCases": {
+    "recommended": [
+      "Use near-black backgrounds (`#121212`–`#1f1f1f`) — depth through shade variation",
+      "Apply Spotify Green (`#1ed760`) only for play controls, active states, and primary CTAs",
+      "Use pill shape (500px–9999px) for all buttons — Inter (50%) for play controls",
+      "Apply uppercase + wide letter-spacing (1.4px–2px) on button labels",
+      "Keep typography compact (10px–24px range) — this is an app, not a magazine",
+      "Use heavy shadows (`0.3–0.5 opacity`) for elevated elements on dark backgrounds",
+      "Let album art provide color — the UI itself is achromatic"
+    ],
+    "avoid": [
+      "Don't use Spotify Green decoratively or on backgrounds — it's functional only",
+      "Don't use light backgrounds for primary surfaces — the dark immersion is core",
+      "Don't skip the pill/circle geometry on buttons — square buttons break the identity",
+      "Don't use thin/subtle shadows — on dark backgrounds, shadows need to be heavy to be visible",
+      "Don't add additional brand colors — green + achromatic grays is the complete palette",
+      "Don't use relaxed line-heights — Spotify's typography is compact and dense",
+      "Don't expose raw gray borders — use shadow-based or inset borders instead"
+    ]
+  },
+  "agentGuidance": {
+    "promptGuide": [
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Quick Color Reference",
+        "content": "- Background: Near Black (`#121212`)\n- Surface: Dark Card (`#181818`)\n- Text: White (`#ffffff`)\n- Secondary text: Silver (`#b3b3b3`)\n- Accent: Spotify Green (`#1ed760`)\n- Border: `#4d4d4d`\n- Error: Negative Red (`#f3727f`)"
+      },
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Example Component Prompts",
+        "content": "- \"Create a dark card: #181818 background, 8px radius. Title at 16px DM Sans weight 700, white text. Subtitle at 14px weight 400, #b3b3b3. Shadow rgba(0,0,0,0.3) 0px 8px 8px on hover.\"\n- \"Design a pill button: #1f1f1f background, white text, 9999px radius, 8px 16px padding. 14px DM Sans weight 700, uppercase, letter-spacing 1.4px.\"\n- \"Build a Inter play button: Spotify Green (#1ed760) background, #000000 icon, 50% radius, 12px padding.\"\n- \"Create search input: #1f1f1f background, white text, 500px radius, 12px 48px padding. Inset border: rgb(124,124,124) 0px 0px 0px 1px inset.\"\n- \"Design navigation sidebar: #121212 background. Active items: 14px weight 700, white. Inactive: 14px weight 400, #b3b3b3.\""
+      },
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Iteration Guide",
+        "content": "1. Start with #121212 — everything lives in near-black darkness\n2. Spotify Green for functional highlights only (play, active, CTA)\n3. Pill everything — 500px for large, 9999px for small, 50% for Inter\n4. Uppercase + wide tracking on buttons — the systematic label voice\n5. Heavy shadows (0.3–0.5 opacity) for elevation — light shadows are invisible on dark\n6. Album art provides all the color — the UI stays achromatic"
+      }
+    ],
+    "iterationGuide": [
+      {
+        "section": "Design System Inspired by Spotify > 9. Agent Prompt Guide > Iteration Guide",
+        "content": "1. Start with #121212 — everything lives in near-black darkness\n2. Spotify Green for functional highlights only (play, active, CTA)\n3. Pill everything — 500px for large, 9999px for small, 50% for Inter\n4. Uppercase + wide tracking on buttons — the systematic label voice\n5. Heavy shadows (0.3–0.5 opacity) for elevation — light shadows are invisible on dark\n6. Album art provides all the color — the UI stays achromatic"
+      }
+    ]
+  },
+  "knownGaps": [
+
+  ],
+  "additionalGuidance": [
+    {
+      "level": 3,
+      "title": "Primary Brand",
+      "path": "Design System Inspired by Spotify > 2. Color Palette & Roles > Primary Brand",
+      "content": "- **Spotify Green** (`#1ed760`): Primary brand accent — play buttons, active states, CTAs\n- **Near Black** (`#121212`): Deepest background surface\n- **Dark Surface** (`#181818`): Cards, containers, elevated surfaces\n- **Mid Dark** (`#1f1f1f`): Button backgrounds, interactive surfaces"
+    },
+    {
+      "level": 3,
+      "title": "Text",
+      "path": "Design System Inspired by Spotify > 2. Color Palette & Roles > Text",
+      "content": "- **White** (`#ffffff`): `--text-base`, primary text\n- **Silver** (`#b3b3b3`): Secondary text, muted labels, inactive nav\n- **Near White** (`#cbcbcb`): Slightly brighter secondary text\n- **Light** (`#fdfdfd`): Near-pure white for maximum emphasis"
+    },
+    {
+      "level": 3,
+      "title": "Spacing System",
+      "path": "Design System Inspired by Spotify > 5. Layout Principles > Spacing System",
+      "content": "- Base unit: 8px\n- Scale: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 14px, 15px, 16px, 20px"
+    }
+  ]
+}
