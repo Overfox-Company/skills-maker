@@ -78,7 +78,8 @@
 .workspace {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  max-width: 1800px;
+  width: 100%;
+  min-height: calc(100dvh - 68px);
   margin: 0 auto;
 }
 .sidebar {
@@ -1043,7 +1044,7 @@
   grid-column: span 12;
 }
 .focus-mode .workspace {
-  max-width: 1500px;
+  width: 100%;
 }
 @container (max-width: 740px) {
   .gallery[data-columns="3"] {
@@ -1310,4 +1311,281 @@
 }
 .gallery .sample-content [data-slot="input"]:user-invalid {
   border-color: var(--destructive);
+}
+.palette-mode-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #afbeb2;
+}
+.brand-select .palette-mode-icon {
+  margin-left: 4px;
+}
+.brand-options .palette-mode-icon {
+  margin-left: 6px;
+  opacity: 0.8;
+}
+.preview-meta .palette-mode-icon {
+  color: #a6b8aa;
+}
+/* Complex shadows and multi-value padding complement Motion's shared tokens. */
+.gallery .sample-card {
+  transition: box-shadow 350ms ease;
+}
+.gallery [data-slot="button"],
+.gallery [data-slot="input"],
+.gallery [data-slot="textarea"] {
+  transition:
+    padding 350ms ease,
+    box-shadow 350ms ease;
+}
+/* Keep moving cards inside the preview while columns reflow. */
+.preview-main {
+  overflow-x: clip;
+}
+.studio {
+  width: 100%;
+  overflow: clip;
+}
+
+/* Brand rules override shadcn's default input chrome, including focus rings. */
+.gallery .brand-form [data-slot="input"],
+.gallery .brand-form [data-slot="textarea"] {
+  background: var(--input-bg);
+  color: var(--input-color);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding);
+  min-height: var(--input-height);
+  height: auto;
+  box-shadow: none;
+  outline: none;
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    padding 0.3s,
+    border-radius 0.3s;
+}
+.gallery .brand-form[data-border="underline"] :is(input, textarea) {
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.gallery .brand-form[data-border="none"] :is(input, textarea) {
+  border-color: transparent;
+}
+.gallery .brand-form :is(input, textarea):focus {
+  background: var(--input-focus-bg);
+  border-color: var(--input-focus-color);
+  box-shadow: var(--input-focus-shadow);
+  outline: none;
+}
+.gallery
+  .brand-form[data-border="underline"]
+  :is(input, textarea):focus {
+  box-shadow: 0 1px 0 var(--input-focus-color);
+}
+.gallery .brand-form :is(input, textarea)[aria-invalid="true"] {
+  border-color: var(--destructive);
+  box-shadow: none;
+}
+.gallery .brand-form :is(input, textarea):disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.brand-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.brand-field label {
+  order: -1;
+  line-height: 1.4;
+}
+.brand-form[data-label="floating"] .brand-field label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition:
+    top 0.3s,
+    font-size 0.3s;
+  z-index: 1;
+  padding: 0 4px;
+  background: var(--input-bg);
+}
+.brand-form[data-label="floating"]
+  .brand-field:has(input:focus, input:not(:placeholder-shown))
+  label {
+  top: 0;
+  font-size: 11px;
+}
+.brand-form[data-label="floating"] .brand-field {
+  margin-top: 10px;
+}
+.input-error {
+  color: var(--destructive);
+  margin-top: -6px;
+}
+.input-combination {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.input-combination .brand-field {
+  flex: 1;
+}
+.rule-caption {
+  font-size: 11px;
+  line-height: 1.6;
+}
+.feedback-stack {
+  display: grid;
+  gap: 12px;
+}
+.gallery .brand-alert {
+  border: 1px solid color-mix(in srgb, var(--feedback), transparent 60%);
+  background: color-mix(in srgb, var(--feedback) 7%, var(--card));
+  color: var(--foreground);
+  border-radius: var(--card-radius);
+}
+.gallery .brand-alert > svg {
+  color: var(--feedback);
+}
+.gallery .brand-alert [data-slot="alert-description"] {
+  color: var(--foreground);
+  opacity: 0.85;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.brand-alert button {
+  margin-top: 8px;
+}
+.content-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.content-toolbar > strong {
+  font-size: 18px;
+}
+.chart-container {
+  width: 100%;
+  height: 200px;
+  min-width: 0;
+  margin: 12px 0;
+}
+.gallery .brand-content {
+  gap: 0;
+  box-shadow: var(--sample-shadow);
+  overflow: hidden;
+  min-width: 0;
+  transition:
+    padding 0.35s,
+    border-radius 0.35s,
+    background 0.35s;
+}
+.product-art {
+  position: relative;
+  background: var(--secondary);
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+}
+.product-art > svg {
+  width: 100%;
+  max-width: 300px;
+  height: 180px;
+}
+.product-art > [data-slot="badge"] {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+.product-details {
+  display: grid;
+  gap: 14px;
+  padding-block: 18px 0;
+}
+.product-details strong {
+  font-size: 15px;
+}
+.product-details small {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.finance-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px !important;
+  margin-bottom: 16px;
+}
+.balance-value {
+  font-size: clamp(24px, 2.5vw, 36px);
+  letter-spacing: -1px;
+}
+.finance-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.finance-metrics div {
+  display: grid;
+  gap: 6px;
+}
+.finance-metrics small,
+.transaction-state {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.transaction-state {
+  display: block;
+  margin-top: 4px;
+}
+.amount-cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.brand-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.brand-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  border-bottom: 1px solid var(--border) !important;
+}
+.brand-list-row label {
+  display: block;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.brand-list-row small {
+  display: block;
+  color: var(--muted-foreground);
+  font-weight: 400;
+  margin-top: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery .brand-form *,
+  .gallery .brand-content {
+    transition: none !important;
+  }
+}
+.gallery .brand-form[data-border="outline"] :is(input, textarea):focus {
+  border-width: var(--input-focus-width);
+}
+.gallery .brand-form[data-border="none"] :is(input, textarea):focus {
+  border-color: var(--input-focus-color);
 }

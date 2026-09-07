@@ -7,7 +7,6 @@ sources:
   colors: dataset/supabase.json
   typography: dataset/supabase.json
   layout: dataset/supabase.json
-  spacing: dataset/supabase.json
   shape: dataset/supabase.json
   elevation: dataset/supabase.json
   buttons: dataset/supabase.json
@@ -137,8 +136,53 @@ components:
     fontWeight: 500
     letterSpacing: 0px
   input:
+    source: text-input
+    guidance:
+      - section: Components > Inputs & Forms
+        content: |-
+          **`text-input`** — standard form input.
+          - Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-md}`, padding `{spacing.sm} {spacing.md}` (8px 12px), rounded `{rounded.sm}` 6px, 1px `{colors.hairline}` border.
+    label: stacked
+    border: outline
+    css:
+      --input-padding: 8px 12px
+      --input-radius: 6px
+      --input-height: 44px
+      --input-bg: "#ffffff"
+      --input-color: "#171717"
+      --input-border: "#dfdfdf"
+      --input-focus-width: 2px
+      --input-focus-bg: "#ffffff"
+      --input-focus-color: "#3ecf8e"
+      --input-focus-shadow: "0 0 0 3px color-mix(in srgb, #3ecf8e, transparent 80%)"
+    fallback: Cuando no hay una regla de foco explícita se usa un halo de 3px al 20%; los colores de roles se componen con la paleta seleccionada.
     borderRadius: 6px
     padding: 8px 12px
+  content:
+    product:
+      source: Respaldo del editor
+      style:
+        background: "#ffffff"
+        color: "#171717"
+        borderRadius: 12px
+        padding: 20px
+        border: none
+    finance:
+      source: Respaldo del editor
+      style:
+        background: "#ffffff"
+        color: "#171717"
+        borderRadius: 12px
+        padding: 20px
+        border: none
+    list:
+      source: Respaldo del editor
+      style:
+        background: "#ffffff"
+        color: "#171717"
+        borderRadius: 12px
+        padding: 20px
+        border: none
   card:
     borderRadius: 12px
     padding: 24px
@@ -160,7 +204,7 @@ resolvedCss:
   --success: "#4ade80"
   --warning: "#ffdb13"
   --destructive: "#ff2201"
-  --info: "#3ecf8e"
+  --info: "#2563eb"
   --radius: 8px
   --card-radius: 12px
   --button-radius: 6px
@@ -183,6 +227,14 @@ resolvedCss:
   --sample-padding: 24px
   --preview-columns: 2
   --sample-shadow: 0 1px 3px rgba(0,0,0,0.06)
+  --input-height: 44px
+  --input-bg: "#ffffff"
+  --input-color: "#171717"
+  --input-border: "#dfdfdf"
+  --input-focus-width: 2px
+  --input-focus-bg: "#ffffff"
+  --input-focus-color: "#3ecf8e"
+  --input-focus-shadow: "0 0 0 3px color-mix(in srgb, #3ecf8e, transparent 80%)"
 ---
 
 # Mi sistema de diseño
@@ -191,9 +243,8 @@ resolvedCss:
 
 - **Paleta de colores:** Supabase
 - **Tipografía:** Supabase
-- **Distribución de contenido:** Supabase
-- **Espaciado:** Supabase
-- **Bordes y formas:** Supabase
+- **Distribución y espaciado:** Supabase
+- **Formas y tarjetas:** Supabase
 - **Sombras y profundidad:** Supabase
 - **Botones:** Supabase
 - **Campos y controles:** Supabase
@@ -204,13 +255,15 @@ La fuente de verdad es `resolvedCss` y los componentes resueltos del front matte
 
 - Colores y tipografía se heredan globalmente; botones y campos aportan geometría, padding y estados.
 - Bordes y formas controla tarjetas y contenedores; los radios de botones y campos pertenecen a sus propios selectores.
-- Distribución controla columnas; Espaciado controla separaciones y relleno.
+- Distribución y espaciado controla columnas, separaciones y relleno desde una misma marca.
 - Sombras controla la elevación de tarjetas y contenedores.
 - Los componentes, menús, diálogos y formularios respetan el modo nativo de la paleta elegida. El sidebar oscuro pertenece al editor, no al diseño exportado.
 - Usar componentes shadcn/ui accesibles. Respetar navegación por teclado, foco visible y prefers-reduced-motion.
 
 ### Adaptaciones explícitas de la vista previa
 
+- Los estados y las etiquetas de campos se interpretan desde tokens y guías. Cuando no hay una regla de foco explícita se usa un halo de 3px al 20%; los colores de roles se componen con la paleta seleccionada.
+- Tarjetas de contenido y listas usan el padding y los radios de sus tokens específicos de Formas y tarjetas; si faltan se usan 20px y el radio lg. Los colores semánticos ausentes usan verde, ámbar, rojo y azul de respaldo.
 - La vista previa conserva el modo nativo de la paleta: fondo, superficie, texto, bordes y colores semánticos proceden de la marca seleccionada. El sidebar del editor permanece oscuro y no forma parte del sistema exportado. Solo el texto de los botones primarios se ajusta si necesita contraste mínimo 4.5:1.
 - Galería responsive: máximo 3 columnas, 2 bajo 740 px de contenedor y 1 bajo 620 px. La aplicación mantiene una grilla exterior 4/8 en escritorio.
 - Escala de muestra: títulos 24–44 px, texto 14–18 px, separación 8–32 px, relleno de tarjetas 12–32 px. Los tokens originales se conservan como referencia.
@@ -235,7 +288,7 @@ La fuente de verdad es `resolvedCss` y los componentes resueltos del front matte
   --success: #4ade80;
   --warning: #ffdb13;
   --destructive: #ff2201;
-  --info: #3ecf8e;
+  --info: #2563eb;
   --radius: 8px;
   --card-radius: 12px;
   --button-radius: 6px;
@@ -258,6 +311,14 @@ La fuente de verdad es `resolvedCss` y los componentes resueltos del front matte
   --sample-padding: 24px;
   --preview-columns: 2;
   --sample-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --input-height: 44px;
+  --input-bg: #ffffff;
+  --input-color: #171717;
+  --input-border: #dfdfdf;
+  --input-focus-width: 2px;
+  --input-focus-bg: #ffffff;
+  --input-focus-color: #3ecf8e;
+  --input-focus-shadow: 0 0 0 3px color-mix(in srgb, #3ecf8e, transparent 80%);
 }
 ```
 
@@ -499,13 +560,38 @@ Fuente: `dataset/supabase.json`. Referencia original subordinada a las reglas de
 }
 ```
 
-## Distribución de contenido
+## Distribución y espaciado
 
 Fuente: `dataset/supabase.json`. Referencia original subordinada a las reglas de composición anteriores.
 
 ```json
 {
+  "spacing": {
+    "xxs": "2px",
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "xxl": "32px",
+    "huge": "64px"
+  },
+  "spacingValues": [
+    "8px",
+    "2px",
+    "4px",
+    "12px",
+    "16px",
+    "24px",
+    "32px",
+    "64px",
+    "96px"
+  ],
   "gridAndContainers": [
+    {
+      "section": "Layout > Spacing System",
+      "content": "- **Base unit**: 8px (with 2 / 4 / 12 sub-tokens for fine work).\n- **Tokens**: `{spacing.xxs}` 2px · `{spacing.xs}` 4px · `{spacing.sm}` 8px · `{spacing.md}` 12px · `{spacing.lg}` 16px · `{spacing.xl}` 24px · `{spacing.xxl}` 32px · `{spacing.huge}` 64px.\n- **Section padding**: 64–96px on marketing surfaces.\n- **Card internal padding**: 32px on feature/pricing cards."
+    },
     {
       "section": "Layout > Grid & Container",
       "content": "- Marketing pages center in a ~1280px container with no edge-bleed; the brand keeps content inside the box.\n- Pricing collapses 4-up → 2-up → 1-up at 1024 / 768 breakpoints.\n- Product UI mockups stack 2-up or render as overlapping panes inside the same container."
@@ -548,74 +634,182 @@ Fuente: `dataset/supabase.json`. Referencia original subordinada a las reglas de
 }
 ```
 
-## Espaciado
+## Formas y tarjetas
 
 Fuente: `dataset/supabase.json`. Referencia original subordinada a las reglas de composición anteriores.
 
 ```json
 {
-  "tokens": {
-    "xxs": "2px",
-    "xs": "4px",
-    "sm": "8px",
-    "md": "12px",
-    "lg": "16px",
-    "xl": "24px",
-    "xxl": "32px",
-    "huge": "64px"
-  },
-  "values": [
-    "8px",
-    "2px",
-    "4px",
-    "12px",
-    "16px",
-    "24px",
-    "32px",
-    "64px",
-    "96px"
-  ],
-  "guidance": [
-    {
-      "section": "Layout > Spacing System",
-      "content": "- **Base unit**: 8px (with 2 / 4 / 12 sub-tokens for fine work).\n- **Tokens**: `{spacing.xxs}` 2px · `{spacing.xs}` 4px · `{spacing.sm}` 8px · `{spacing.md}` 12px · `{spacing.lg}` 16px · `{spacing.xl}` 24px · `{spacing.xxl}` 32px · `{spacing.huge}` 64px.\n- **Section padding**: 64–96px on marketing surfaces.\n- **Card internal padding**: 32px on feature/pricing cards."
-    }
-  ]
-}
-```
-
-## Bordes y formas
-
-Fuente: `dataset/supabase.json`. Referencia original subordinada a las reglas de composición anteriores.
-
-```json
-{
-  "radii": {
-    "xs": "4px",
-    "sm": "6px",
-    "md": "8px",
-    "lg": "12px",
-    "xl": "16px",
-    "full": "9999px"
-  },
-  "radiusValues": [
-    "4px",
-    "6px",
-    "8px",
-    "12px",
-    "16px",
-    "9999px"
-  ],
-  "guidance": [
-    {
-      "section": "Shapes > Border Radius Scale",
-      "content": "| Token | Value | Use |\n|---|---|---|\n| `{rounded.xs}` | 4px | Form inputs, hairline tags |\n| `{rounded.sm}` | 6px | Buttons (the brand's signature button radius), code blocks |\n| `{rounded.md}` | 8px | Compact cards, alerts |\n| `{rounded.lg}` | 12px | Pricing cards, feature cards, product mockups |\n| `{rounded.xl}` | 16px | Modal dialogs, large container chrome |\n| `{rounded.full}` | 9999px | Pill tags, avatars |"
+  "shape": {
+    "radii": {
+      "xs": "4px",
+      "sm": "6px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px",
+      "full": "9999px"
     },
-    {
-      "section": "Shapes > Photography Geometry",
-      "content": "The brand uses minimal photography. Customer logo strips display wordmarks at uniform height (~24–32px) in greyscale; case-study cards (rare) use 4:3 photos inset in `{rounded.lg}` containers."
-    }
-  ]
+    "radiusValues": [
+      "4px",
+      "6px",
+      "8px",
+      "12px",
+      "16px",
+      "9999px"
+    ],
+    "guidance": [
+      {
+        "section": "Shapes > Border Radius Scale",
+        "content": "| Token | Value | Use |\n|---|---|---|\n| `{rounded.xs}` | 4px | Form inputs, hairline tags |\n| `{rounded.sm}` | 6px | Buttons (the brand's signature button radius), code blocks |\n| `{rounded.md}` | 8px | Compact cards, alerts |\n| `{rounded.lg}` | 12px | Pricing cards, feature cards, product mockups |\n| `{rounded.xl}` | 16px | Modal dialogs, large container chrome |\n| `{rounded.full}` | 9999px | Pill tags, avatars |"
+      },
+      {
+        "section": "Shapes > Photography Geometry",
+        "content": "The brand uses minimal photography. Customer logo strips display wordmarks at uniform height (~24–32px) in greyscale; case-study cards (rare) use 4:3 photos inset in `{rounded.lg}` containers."
+      }
+    ]
+  },
+  "cards": {
+    "tokens": {
+      "button-primary-green": {
+        "backgroundColor": "{colors.primary}",
+        "textColor": "{colors.on-primary}",
+        "typography": "{typography.button-md}",
+        "rounded": "{rounded.sm}",
+        "padding": "8px 16px"
+      },
+      "button-primary-green-pressed": {
+        "backgroundColor": "{colors.primary-deep}",
+        "textColor": "{colors.on-primary}",
+        "typography": "{typography.button-md}",
+        "rounded": "{rounded.sm}",
+        "padding": "8px 16px"
+      },
+      "button-secondary-outline": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.button-md}",
+        "rounded": "{rounded.sm}",
+        "padding": "8px 16px"
+      },
+      "button-on-dark": {
+        "backgroundColor": "{colors.canvas-night}",
+        "textColor": "{colors.on-dark}",
+        "typography": "{typography.button-md}",
+        "rounded": "{rounded.sm}",
+        "padding": "8px 16px"
+      },
+      "button-link": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.button-md}",
+        "rounded": "{rounded.xs}",
+        "padding": "0px"
+      },
+      "text-input": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.sm}",
+        "padding": "8px 12px"
+      },
+      "card-feature-light": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.lg}",
+        "padding": "32px"
+      },
+      "card-pricing": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.lg}",
+        "padding": "32px"
+      },
+      "card-pricing-featured": {
+        "backgroundColor": "{colors.canvas-night}",
+        "textColor": "{colors.on-dark}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.lg}",
+        "padding": "32px"
+      },
+      "card-feature-dark": {
+        "backgroundColor": "{colors.canvas-night}",
+        "textColor": "{colors.on-dark}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.lg}",
+        "padding": "32px"
+      },
+      "code-block": {
+        "backgroundColor": "{colors.canvas-night}",
+        "textColor": "{colors.on-dark}",
+        "typography": "{typography.code}",
+        "rounded": "{rounded.sm}",
+        "padding": "16px"
+      },
+      "pill-tag-green": {
+        "backgroundColor": "{colors.primary}",
+        "textColor": "{colors.on-primary}",
+        "typography": "{typography.micro}",
+        "rounded": "{rounded.full}",
+        "padding": "2px 8px"
+      },
+      "pill-tag-soft": {
+        "backgroundColor": "{colors.canvas-soft}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.micro}",
+        "rounded": "{rounded.full}",
+        "padding": "2px 8px"
+      },
+      "nav-bar-light": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.xs}",
+        "padding": "16px 24px"
+      },
+      "link-on-light": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink}",
+        "typography": "{typography.body-md}",
+        "rounded": "{rounded.xs}",
+        "padding": "0px"
+      },
+      "footer-light": {
+        "backgroundColor": "{colors.canvas}",
+        "textColor": "{colors.ink-mute}",
+        "typography": "{typography.caption}",
+        "rounded": "{rounded.xs}",
+        "padding": "64px 24px"
+      }
+    },
+    "guidance": [
+      {
+        "section": "Components > Buttons",
+        "content": "**`button-primary-green`** — the signature CTA.\n- Background `{colors.primary}`, text `{colors.on-primary}` (near-black, NOT white), type `{typography.button-md}`, padding `{spacing.sm} {spacing.lg}` (8px 16px), rounded `{rounded.sm}` 6px.\n- Pressed state `button-primary-green-pressed` shifts to `{colors.primary-deep}`.\n\n**`button-secondary-outline`** — outline alternative on white.\n- Background `{colors.canvas}`, text `{colors.ink}`, 1px solid `{colors.hairline-strong}` border, same shape.\n\n**`button-on-dark`** — used on dark surfaces / code-block CTAs.\n- Background `{colors.canvas-night}`, text `{colors.on-dark}`, same shape.\n\n**`button-link`** — text-only inline button.\n- Transparent background, text `{colors.ink}` rendered in `{typography.button-md}`, no padding, with a subtle underline on hover."
+      },
+      {
+        "section": "Components > Cards & Containers",
+        "content": "**`card-feature-light`** — feature card on white.\n- Background `{colors.canvas}`, padding `{spacing.xxl}`, rounded `{rounded.lg}` 12px, 1px `{colors.hairline}` border.\n\n**`card-pricing`** — standard pricing tier.\n- Background `{colors.canvas}`, padding `{spacing.xxl}`, rounded `{rounded.lg}`, 1px `{colors.hairline}` border. Title in `{typography.heading-lg}`, price in `{typography.display-md}`, body in `{typography.body-md}`, CTA `button-primary-green` pinned bottom.\n\n**`card-pricing-featured`** — inverted dark featured tier.\n- Background `{colors.canvas-night}`, text `{colors.on-dark}`, otherwise identical structure.\n\n**`card-feature-dark`** — feature card with deep dark fill.\n- Background `{colors.canvas-night}`, text `{colors.on-dark}`, padding `{spacing.xxl}`, rounded `{rounded.lg}`. Used for code-heavy feature explanations.\n\n**`code-block`** — code snippet container.\n- Background `{colors.canvas-night}`, text `{colors.on-dark}` rendered in `{typography.code}`. Padding `{spacing.lg}` 16px, rounded `{rounded.sm}` 6px."
+      },
+      {
+        "section": "Components > Inputs & Forms",
+        "content": "**`text-input`** — standard form input.\n- Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-md}`, padding `{spacing.sm} {spacing.md}` (8px 12px), rounded `{rounded.sm}` 6px, 1px `{colors.hairline}` border."
+      },
+      {
+        "section": "Components > Navigation",
+        "content": "**`nav-bar-light`** — top nav across the site.\n- Background `{colors.canvas}`, text `{colors.ink}`, padding `{spacing.lg} {spacing.xl}`. Logo on the left, primary nav center, \"Sign In\" link + filled `button-primary-green` on the right."
+      },
+      {
+        "section": "Components > Pills, Tags, and Chips",
+        "content": "**`pill-tag-green`** — small green pill used for \"new\" or featured indicators.\n- Background `{colors.primary}`, text `{colors.on-primary}`, type `{typography.micro}`, padding `{spacing.xxs} {spacing.sm}`, rounded `{rounded.full}`.\n\n**`pill-tag-soft`** — neutral pill on light surfaces.\n- Background `{colors.canvas-soft}`, text `{colors.ink}`, otherwise same shape."
+      },
+      {
+        "section": "Components > Signature Components",
+        "content": "**Composited Product UI Mockups** — multi-layer dashboard / SQL editor / log pane composites with subtle Level 2 shadows. The product is the brand's argument; mockups always sit on white canvas with no surrounding decoration.\n\n**`link-on-light`** — inline links in body copy.\n- Text `{colors.ink}` rendered in `{typography.body-md}` with a persistent underline.\n\n**`footer-light`** — site-wide footer.\n- Background `{colors.canvas}`, text `{colors.ink-mute}`, type `{typography.caption}`, padding `{spacing.huge} {spacing.xl}` (64px 24px). Holds 4–5 columns of link groups, social icons, and a small legal row."
+      }
+    ]
+  }
 }
 ```
 

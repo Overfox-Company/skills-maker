@@ -3,21 +3,8 @@ import { sections } from "./design-engine.js";
 const fenced = (value) =>
   `\n\`\`\`json\n${JSON.stringify(value, null, 2)}\n\`\`\`\n`;
 function sourceSection(key, source) {
-  if (key === "layout")
-    return {
-      gridAndContainers: source.layout.gridAndContainers.filter(
-        (g) => !/Spacing/.test(g.section),
-      ),
-      responsive: source.layout.responsive,
-    };
-  if (key === "spacing")
-    return {
-      tokens: source.layout.spacing,
-      values: source.layout.spacingValues,
-      guidance: source.layout.gridAndContainers.filter((g) =>
-        /Spacing/.test(g.section),
-      ),
-    };
+  if (key === "shape") return { shape: source.shape, cards: source.components };
+  if (key === "layout") return source.layout;
   if (key === "buttons" || key === "inputs") {
     const expression =
       key === "buttons" ? /button|cta/i : /input|form|field|search|control/i;
@@ -68,9 +55,12 @@ export function generateMarkdown(design, sources, fontManifest = []) {
       "on-primary": design.palette.onPrimary,
       hairline: design.palette.border,
     },
+    // Normalized preview roles point back to the unmodified token name.
+    // Consumers can use the roles without losing the brand's native vocabulary.
+    colorRoleSources: design.palette.sources,
     typography: design.selected.typography.typography,
     rounded: design.selected.shape.radii,
-    spacing: design.selected.spacing.spacing,
+    spacing: design.selected.layout.spacing,
     components: {
       button: {
         borderRadius: design.meta.buttonRadius,
@@ -79,9 +69,11 @@ export function generateMarkdown(design, sources, fontManifest = []) {
         letterSpacing: design.css["--button-tracking"],
       },
       input: {
+        ...design.inputs,
         borderRadius: design.meta.inputRadius,
         padding: design.css["--input-padding"],
       },
+      content: design.content,
       card: {
         borderRadius: design.meta.cardRadius,
         padding: design.css["--sample-padding"],
@@ -90,7 +82,7 @@ export function generateMarkdown(design, sources, fontManifest = []) {
     },
     resolvedCss: design.css,
   };
-  let md = `---\n${stringify(frontmatter, { lineWidth: 0 })}---\n\n# Mi sistema de diseño\n\n## Composición\n\n${sections.map((s) => `- **${s.label}:** ${design.selected[s.key].name}`).join("\n")}\n\n## Reglas de implementación\n\nLa fuente de verdad es \`resolvedCss\` y los componentes resueltos del front matter. Las referencias originales de cada sección documentan la marca, pero NO deben sobreescribir decisiones de otra sección.\n\n- Colores y tipografía se heredan globalmente; botones y campos aportan geometría, padding y estados.\n- Bordes y formas controla tarjetas y contenedores; los radios de botones y campos pertenecen a sus propios selectores.\n- Distribución controla columnas; Espaciado controla separaciones y relleno.\n- Sombras controla la elevación de tarjetas y contenedores.\n- Los componentes, menús, diálogos y formularios respetan el modo nativo de la paleta elegida. El sidebar oscuro pertenece al editor, no al diseño exportado.\n- Usar componentes shadcn/ui accesibles. Respetar navegación por teclado, foco visible y prefers-reduced-motion.\n\n### Adaptaciones explícitas de la vista previa\n\n${design.adaptations.map((x) => `- ${x}`).join("\n")}\n\n## CSS de la vista previa\n\n\`\`\`css\n:root {\n${Object.entries(
+  let md = `---\n${stringify(frontmatter, { lineWidth: 0 })}---\n\n# Mi sistema de diseño\n\n## Composición\n\n${sections.map((s) => `- **${s.label}:** ${design.selected[s.key].name}`).join("\n")}\n\n## Reglas de implementación\n\nLa fuente de verdad es \`resolvedCss\` y los componentes resueltos del front matter. Las referencias originales de cada sección documentan la marca, pero NO deben sobreescribir decisiones de otra sección.\n\n- Colores y tipografía se heredan globalmente; botones y campos aportan geometría, padding y estados.\n- Bordes y formas controla tarjetas y contenedores; los radios de botones y campos pertenecen a sus propios selectores.\n- Distribución y espaciado controla columnas, separaciones y relleno desde una misma marca.\n- Sombras controla la elevación de tarjetas y contenedores.\n- Los componentes, menús, diálogos y formularios respetan el modo nativo de la paleta elegida. El sidebar oscuro pertenece al editor, no al diseño exportado.\n- Usar componentes shadcn/ui accesibles. Respetar navegación por teclado, foco visible y prefers-reduced-motion.\n\n### Adaptaciones explícitas de la vista previa\n\n${design.adaptations.map((x) => `- ${x}`).join("\n")}\n\n## CSS de la vista previa\n\n\`\`\`css\n:root {\n${Object.entries(
     design.css,
   )
     .map(([k, v]) => `  ${k}: ${v};`)

@@ -1,3 +1,8 @@
+import { ContentSamples, BrandField } from "./components/content-samples";
+import { motion, useReducedMotion } from "framer-motion";
+import { HugeiconsIcon } from "@hugeicons/react";
+import Sun03Icon from "@hugeicons-pro/core-stroke-rounded/Sun03Icon";
+import Moon02Icon from "@hugeicons-pro/core-stroke-rounded/Moon02Icon";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDownToLine,
@@ -105,6 +110,23 @@ function Tip({ label, children }) {
     </Tooltip>
   );
 }
+function PaletteModeIcon({ mode }) {
+  return (
+    <span
+      className="palette-mode-icon"
+      title={mode === "dark" ? "Paleta oscura" : "Paleta clara"}
+      data-mode={mode}
+    >
+      <HugeiconsIcon
+        icon={mode === "dark" ? Moon02Icon : Sun03Icon}
+        size={14}
+        strokeWidth={1.5}
+        aria-hidden="true"
+      />
+    </span>
+  );
+}
+
 function BrandDot({ brand }) {
   return (
     <span
@@ -115,8 +137,13 @@ function BrandDot({ brand }) {
   );
 }
 function Sample({ number, title, tag, children, className = "" }) {
+  const reduceMotion = useReducedMotion();
   return (
-    <section className={`sample ${className}`}>
+    <motion.section
+      layout={reduceMotion ? false : "position"}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className={`sample ${className}`}
+    >
       <div className="sample-label">
         <span>
           <span className="sample-number">{number}</span>
@@ -127,10 +154,25 @@ function Sample({ number, title, tag, children, className = "" }) {
       <Card className="sample-card">
         <CardContent className="sample-content">{children}</CardContent>
       </Card>
-    </section>
+    </motion.section>
   );
 }
 function Gallery({ design, notify }) {
+  const reduceMotion = useReducedMotion();
+  // Interpolate shared tokens so nested shadcn components change together.
+  // Font family and column count switch discretely; layout handles their reflow.
+  const immediate = {};
+  const animated = {};
+  for (const [key, value] of Object.entries(design.css)) {
+    if (
+      /font$|columns$|shadow$|padding$/.test(key) ||
+      key === "--button-padding" ||
+      key === "--input-padding" ||
+      String(value).includes("color-mix")
+    )
+      immediate[key] = value;
+    else animated[key] = value;
+  }
   const [range, setRange] = useState([64]);
   const [notifications, setNotifications] = useState(true);
   const [isPublic, setIsPublic] = useState(false);
@@ -141,16 +183,22 @@ function Gallery({ design, notify }) {
   const [demoName, setDemoName] = useState("Mi próximo proyecto");
   const [projectName, setProjectName] = useState("Mi próximo proyecto");
   const swatches = [
-    ["Primario", design.palette.primary],
-    ["Fondo", design.palette.background],
-    ["Superficie", design.palette.card],
-    ["Borde", design.palette.border],
-    ["Texto", design.palette.foreground],
+    ["Primario", design.palette.primary, design.palette.sources.primary],
+    ["Fondo", design.palette.background, design.palette.sources.background],
+    ["Superficie", design.palette.card, design.palette.sources.card],
+    ["Borde", design.palette.border, design.palette.sources.border],
+    ["Texto", design.palette.foreground, design.palette.sources.foreground],
   ];
   return (
-    <div
+    <motion.div
+      initial={false}
+      animate={animated}
+      transition={{
+        duration: reduceMotion ? 0 : 0.35,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={`gallery ${design.palette.mode}`}
-      style={design.css}
+      style={immediate}
       data-columns={design.meta.columns}
     >
       <Sample
@@ -245,13 +293,13 @@ function Gallery({ design, notify }) {
         className="palette-sample"
       >
         <div className="color-strip">
-          {swatches.map(([name, color]) => (
+          {swatches.map(([name, color, token]) => (
             <button
               type="button"
               key={name}
               style={{ background: color }}
               aria-label={`Copiar ${name}: ${color}`}
-              title={`${name}: ${color}`}
+              title={`${name} (${token}): ${color}`}
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(color);
@@ -266,9 +314,9 @@ function Gallery({ design, notify }) {
           ))}
         </div>
         <div className="swatch-labels">
-          {swatches.map(([name, color]) => (
+          {swatches.map(([name, color, token]) => (
             <div key={name}>
-              <span>{name}</span>
+              <span title={`Token original: ${token}`}>{name} · {token}</span>
               <code>{color.toUpperCase()}</code>
             </div>
           ))}
@@ -317,18 +365,17 @@ function Gallery({ design, notify }) {
             setInvited(true);
             notify("Invitación de ejemplo preparada");
           }}
-          className="sample-form"
+          className="sample-form brand-form"
+          data-label={design.inputs.label}
+          data-border={design.inputs.border}
         >
-          <div className="field">
-            <Label htmlFor="preview-email">Correo electrónico</Label>
-            <Input
-              id="preview-email"
-              type="email"
-              placeholder="nombre@estudio.com"
-              required
-              onChange={() => setInvited(false)}
-            />
-          </div>
+          <BrandField
+            label="Correo electrónico"
+            id="preview-email"
+            type="email"
+            required
+            onChange={() => setInvited(false)}
+          />
           <div className="field">
             <Label htmlFor="preview-description">
               Descripción <span className="subtle">Opcional</span>
@@ -409,7 +456,9 @@ function Gallery({ design, notify }) {
                 </DialogDescription>
               </DialogHeader>
               <form
-                className="sample-form"
+                className="sample-form brand-form"
+                data-label={design.inputs.label}
+                data-border={design.inputs.border}
                 onSubmit={(e) => {
                   e.preventDefault();
                   setProjectName(demoName);
@@ -558,8 +607,8 @@ function Gallery({ design, notify }) {
           <AccordionItem value="one">
             <AccordionTrigger>¿Qué incluye mi DESIGN.md?</AccordionTrigger>
             <AccordionContent>
-              Los tokens, las fuentes y las reglas de las ocho secciones que has
-              elegido, listos para usar en tu proyecto.
+              Los tokens, las fuentes y las reglas de las siete secciones que
+              has elegido, listos para usar en tu proyecto.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="two">
@@ -607,7 +656,8 @@ function Gallery({ design, notify }) {
           Los mismos valores que exportas
         </div>
       </Sample>
-    </div>
+      <ContentSamples design={design} Sample={Sample} />
+    </motion.div>
   );
 }
 function App() {
@@ -723,7 +773,7 @@ function App() {
                 </DialogHeader>
                 <ol className="help-list">
                   <li>
-                    Elige una marca para cada una de las ocho secciones. Puedes
+                    Elige una marca para cada una de las siete secciones. Puedes
                     escribir el nombre con el selector abierto para encontrarla.
                   </li>
                   <li>
@@ -761,7 +811,7 @@ function App() {
                   <br />
                   <span>Hazlo tuyo.</span>
                 </h1>
-                <p>Ocho decisiones. Un lenguaje visual.</p>
+                <p>Siete decisiones. Un lenguaje visual.</p>
               </div>
               <div className="selectors-heading">
                 <span>Referencias por sección</span>
@@ -798,6 +848,11 @@ function App() {
                           <SelectValue>
                             <BrandDot brand={brand} />
                             {brand.name}
+                            {section.key === "colors" && (
+                              <PaletteModeIcon
+                                mode={nativePalette(brand).mode}
+                              />
+                            )}
                           </SelectValue>
                         </SelectTrigger>
                         <SelectContent
@@ -813,6 +868,9 @@ function App() {
                             >
                               <BrandDot brand={b} />
                               {b.name}
+                              {section.key === "colors" && (
+                                <PaletteModeIcon mode={nativePalette(b).mode} />
+                              )}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -916,7 +974,7 @@ function App() {
                   </TabsTrigger>
                 </TabsList>
                 <div className="preview-meta">
-                  <span className={`mode-indicator ${design.palette.mode}`} />
+                  <PaletteModeIcon mode={design.palette.mode} />
                   {design.palette.mode === "dark" ? "Dark mode" : "Light mode"}
                   <span className="meta-divider">/</span>
                   <span>shadcn/ui</span>
@@ -962,7 +1020,7 @@ function App() {
                     <Skeleton className="h-4 w-3/4" />
                     <Skeleton className="h-4 w-1/2" />
                     <Skeleton className="h-4 w-2/3" />
-                    <p>Preparando las ocho secciones…</p>
+                    <p>Preparando las siete secciones…</p>
                   </div>
                 ) : exportError ? (
                   <p role="alert" className="export-error">

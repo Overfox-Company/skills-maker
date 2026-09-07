@@ -1,3 +1,4 @@
+import { inputRules, contentRules } from "./brand-rules.js";
 // Pure composition engine, shared by the preview, Markdown export and regression checks.
 export const sections = [
   {
@@ -14,19 +15,13 @@ export const sections = [
   },
   {
     key: "layout",
-    label: "Distribución de contenido",
-    description: "Columnas y composición",
+    label: "Distribución y espaciado",
+    description: "Columnas, ritmo y densidad",
     icon: "layout",
   },
   {
-    key: "spacing",
-    label: "Espaciado",
-    description: "Ritmo y densidad del contenido",
-    icon: "spacing",
-  },
-  {
     key: "shape",
-    label: "Bordes y formas",
+    label: "Formas y tarjetas",
     description: "Radios de tarjetas y contenedores",
     icon: "shape",
   },
@@ -96,37 +91,78 @@ function contrasting(fg, bg, fallback) {
     ? fg
     : fallback;
 }
+// Datasets retain their original token names. This small role layer only chooses
+// the most appropriate token for the interactive preview; it never renames or
+// discards the source palette.
+function colorRole(colors, keys, fallback, fallbackToken = "respaldo") {
+  const token = keys.find((key) => colors?.[key] !== undefined && colors[key] !== "");
+  return {
+    value: token ? colors[token] : fallback,
+    token: token ?? fallbackToken,
+  };
+}
 export function nativePalette(brand) {
   const c = brand.colors;
-  const primary = pick(
+  const primaryRole = colorRole(
     c,
-    ["primary", "accent", "brand", "spotify-green", "kraken-purple", "white"],
+    [
+      "primary",
+      "primary-cta",
+      "brand",
+      "spotify-green",
+      "kraken-purple",
+      "accent",
+      "white",
+    ],
     Object.values(c)[0] ?? "#3ecf8e",
   );
-  const background = pick(
+  const backgroundRole = colorRole(
     c,
-    ["canvas", "background", "bg", "near-black"],
+    [
+      "canvas",
+      "background",
+      "page-canvas",
+      "background-canvas",
+      "white-canvas",
+      "canvas-black",
+      "background-dark",
+      "bg",
+      "near-black",
+    ],
     "#ffffff",
   );
+  const primary = primaryRole.value;
+  const background = backgroundRole.value;
   const dark = luminance(background) < 0.18;
-  const card = pick(
+  const cardRole = colorRole(
     c,
     [
       "surface",
       "surface-1",
       "surface-card",
+      "card-surface",
+      "card-canvas",
+      "lifted-surface",
       "canvas-soft",
       "background-secondary",
       dark ? "dark-surface" : "surface-light",
     ],
     background,
+    backgroundRole.token,
   );
-  const foreground = pick(
+  const foregroundRole = colorRole(
     c,
-    ["ink", "text", "foreground", dark ? "on-dark" : "on-light"],
-    readableOn(card),
+    [
+      "ink",
+      "text",
+      "foreground",
+      "heading-text",
+      "primary-text",
+      dark ? "on-dark" : "on-light",
+    ],
+    readableOn(cardRole.value),
   );
-  const muted = pick(
+  const mutedRole = colorRole(
     c,
     [
       "ink-mute",
@@ -135,65 +171,99 @@ export function nativePalette(brand) {
       "text-secondary",
       "muted",
       "mute",
+      "body-text",
+      "muted-text",
     ],
     dark ? "#aeb4b0" : "#666666",
   );
-  const secondary = pick(
+  const secondaryRole = colorRole(
     c,
     ["surface-2", "surface-elevated", "canvas-soft", "background-secondary"],
-    `color-mix(in srgb, ${card}, ${foreground} 7%)`,
+    `color-mix(in srgb, ${cardRole.value}, ${foregroundRole.value} 7%)`,
   );
-  const secondaryForeground = pick(
+  const secondaryForegroundRole = colorRole(
     c,
     ["on-secondary", "secondary-foreground"],
-    foreground,
+    foregroundRole.value,
+    foregroundRole.token,
   );
-  const accent = pick(
+  const accentRole = colorRole(
     c,
     ["surface-hover", "surface-3", "hover-background"],
-    `color-mix(in srgb, ${card}, ${foreground} 12%)`,
+    `color-mix(in srgb, ${cardRole.value}, ${foregroundRole.value} 12%)`,
+  );
+  const onPrimaryRole = colorRole(c, ["on-primary", "primary-cta-text"], readableOn(primary));
+  const borderRole = colorRole(
+    c,
+    ["hairline", "border", "border-gray", "divider", "card-border"],
+    dark ? "#363a38" : "#dfdfdf",
   );
   return {
     primary,
     background,
-    card,
-    foreground,
-    muted,
-    secondary,
-    secondaryForeground,
-    accent,
+    card: cardRole.value,
+    foreground: foregroundRole.value,
+    muted: mutedRole.value,
+    secondary: secondaryRole.value,
+    secondaryForeground: secondaryForegroundRole.value,
+    accent: accentRole.value,
     onPrimary: contrasting(
-      pick(c, ["on-primary"], readableOn(primary)),
+      onPrimaryRole.value,
       primary,
       readableOn(primary),
     ),
-    border: pick(
-      c,
-      ["hairline", "border", "border-gray", "divider"],
-      dark ? "#363a38" : "#dfdfdf",
-    ),
+    border: borderRole.value,
     success: pick(
       c,
-      ["success", "positive", "success-green", "green", "primary-soft"],
-      primary,
+      [
+        "semantic-success",
+        "success",
+        "positive",
+        "success-green",
+        "green",
+        "primary-soft",
+      ],
+      "#16a34a",
     ),
     warning: pick(
       c,
-      ["warning", "warning-orange", "accent-yellow", "yellow"],
-      primary,
+      [
+        "semantic-warning",
+        "warning",
+        "warning-orange",
+        "accent-yellow",
+        "yellow",
+      ],
+      "#d97706",
     ),
     error: pick(
       c,
-      ["error", "danger", "negative-red", "accent-tomato", "red"],
-      primary,
+      [
+        "semantic-error",
+        "error",
+        "danger",
+        "negative-red",
+        "accent-tomato",
+        "red",
+      ],
+      "#dc2626",
     ),
     info: pick(
       c,
-      ["info", "announcement-blue", "accent-blue", "blue"],
-      primary,
+      ["semantic-info", "info", "announcement-blue", "accent-blue", "blue"],
+      "#2563eb",
     ),
     mode: dark ? "dark" : "light",
     adapted: false,
+    // Exposed to the palette component so it can show the original token
+    // behind each normalized role without hiding the complete token set.
+    sources: {
+      primary: primaryRole.token,
+      background: backgroundRole.token,
+      card: cardRole.token,
+      border: borderRole.token,
+      foreground: foregroundRole.token,
+    },
   };
 }
 function typeStyle(brand, keys, fallback) {
@@ -312,10 +382,10 @@ export function composeDesign(catalog, selection) {
     i,
     radiusFor(selected.inputs, ["sm", "md", "none"], "6px"),
   );
-  const spacing = selected.spacing.spacing;
+  const spacing = selected.layout.spacing;
   const gap = clamp(
     numeric(
-      pick(spacing, ["lg", "md"], selected.spacing.spacingValues?.[3]),
+      pick(spacing, ["lg", "md"], selected.layout.spacingValues?.[3]),
       16,
     ),
     8,
@@ -323,7 +393,7 @@ export function composeDesign(catalog, selection) {
   );
   const padding = clamp(
     numeric(
-      pick(spacing, ["xl", "lg"], selected.spacing.spacingValues?.[4]),
+      pick(spacing, ["xl", "lg"], selected.layout.spacingValues?.[4]),
       24,
     ),
     12,
@@ -356,7 +426,9 @@ export function composeDesign(catalog, selection) {
     "--mono-font": mono.fontFamily,
     "--body-size": `${clamp(numeric(body.fontSize, 16), 14, 18)}px`,
     "--body-weight": numeric(body.fontWeight, 400),
-    "--body-leading": numeric(body.lineHeight, 1.5),
+    "--body-leading": String(body.lineHeight).endsWith("px")
+      ? numeric(body.lineHeight, 24) / numeric(body.fontSize, 16)
+      : numeric(body.lineHeight, 1.5),
     "--heading-size": `${clamp(numeric(heading.fontSize, 36), 24, 44)}px`,
     "--heading-weight": numeric(heading.fontWeight, 500),
     "--heading-tracking": px(heading.letterSpacing, 0),
@@ -370,7 +442,12 @@ export function composeDesign(catalog, selection) {
     "--preview-columns": selected.layout.columns,
     "--sample-shadow": selected.elevation.shadows[0] ?? "none",
   };
+  const inputs = inputRules(selected.inputs, palette);
+  Object.assign(css, inputs.css);
+  const content = contentRules(selected.shape, palette);
   return {
+    inputs,
+    content,
     selected,
     palette,
     css,
@@ -381,11 +458,14 @@ export function composeDesign(catalog, selection) {
       columns: selected.layout.columns,
       cardRadius,
       buttonRadius,
-      inputRadius,
+      inputRadius: css["--input-radius"],
       bodyFont: body.fontFamily ?? baseFamily,
       headingFont: heading.fontFamily ?? baseFamily,
     },
     adaptations: [
+      "Los estados y las etiquetas de campos se interpretan desde tokens y guías. " +
+        inputs.fallback,
+      "Tarjetas de contenido y listas usan el padding y los radios de sus tokens específicos de Formas y tarjetas; si faltan se usan 20px y el radio lg. Los colores semánticos ausentes usan verde, ámbar, rojo y azul de respaldo.",
       "La vista previa conserva el modo nativo de la paleta: fondo, superficie, texto, bordes y colores semánticos proceden de la marca seleccionada. El sidebar del editor permanece oscuro y no forma parte del sistema exportado. Solo el texto de los botones primarios se ajusta si necesita contraste mínimo 4.5:1.",
       "Galería responsive: máximo 3 columnas, 2 bajo 740 px de contenedor y 1 bajo 620 px. La aplicación mantiene una grilla exterior 4/8 en escritorio.",
       "Escala de muestra: títulos 24–44 px, texto 14–18 px, separación 8–32 px, relleno de tarjetas 12–32 px. Los tokens originales se conservan como referencia.",
@@ -407,7 +487,11 @@ export function validSelection(catalog, value) {
   return Object.fromEntries(
     sections.map(({ key }) => [
       key,
-      ids.has(value?.[key]) ? value[key] : defaultSelection[key],
+      ids.has(value?.[key])
+        ? value[key]
+        : key === "layout" && ids.has(value?.spacing)
+          ? value.spacing
+          : defaultSelection[key],
     ]),
   );
 }

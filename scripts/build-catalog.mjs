@@ -112,20 +112,11 @@ export async function buildCatalog() {
         radiusValues: d.shape.radiusValues,
         columns: Math.min(3, Math.max(1, columns)),
         shadows,
-        components: Object.fromEntries(
-          Object.entries(d.components.tokens).filter(
-            ([key]) =>
-              /button.*primary|primary.*button|button-solid|button-filled|text-input|input-text|^input$|search-input|form-input/.test(
-                key,
-              ) && !/pressed|active|disabled|focus/.test(key),
-          ),
-        ),
+        components: d.components.tokens,
         notes: {
-          components: Object.keys(d.components.tokens).length
-            ? []
-            : d.components.guidance.filter((g) =>
-                /button|input|form/i.test(g.section),
-              ),
+          components: d.components.guidance,
+          imagery: d.imagery.guidance,
+          layout: d.layout.gridAndContainers,
         },
         gaps: {
           components: Object.keys(d.components.tokens).length === 0,

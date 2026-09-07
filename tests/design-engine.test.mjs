@@ -7,6 +7,7 @@ import {
   defaultSelection,
   sections,
   luminance,
+  nativePalette,
   validSelection,
 } from "../src/lib/design-engine.js";
 import { generateMarkdown } from "../src/lib/export-design.js";
@@ -36,10 +37,11 @@ test("cada JSON del dataset aparece una sola vez en todos los selectores", async
   );
   assert.equal(catalog.length, files.length);
   assert.equal(new Set(catalog.map((b) => b.id)).size, files.length);
-  assert.ok(sections.length <= 10);
+  assert.equal(sections.length, 7);
+  assert.ok(!sections.some((section) => section.key === "spacing"));
   assert.deepEqual(catalog.map((b) => b.file).sort(), files.sort());
 });
-test("las 592 selecciones conservan la paleta nativa y valores CSS resueltos", () => {
+test("las 518 selecciones conservan la paleta nativa y valores CSS resueltos", () => {
   for (const section of sections)
     for (const brand of catalog) {
       const design = composeDesign(catalog, {
@@ -101,16 +103,30 @@ test("los selectores alteran su propia sección y mantienen independientes las d
   assert.equal(layout.meta.columns, 1);
   const spacing = composeDesign(catalog, {
     ...defaultSelection,
-    spacing: "linear.app",
+    layout: "linear.app",
   });
   assert.notEqual(spacing.meta.gap, baseline.meta.gap);
+  assert.equal(spacing.selected.layout.id, "linear.app");
+  assert.equal(
+    spacing.meta.columns,
+    catalog.find((b) => b.id === "linear.app").columns,
+  );
 });
-test("la exportación combina ocho fuentes y coincide exactamente con la vista previa", () => {
+test("los roles de color resuelven aliases de datasets sin perder los tokens originales", () => {
+  const lamborghini = catalog.find((brand) => brand.id === "lamborghini");
+  const palette = nativePalette(lamborghini);
+  assert.equal(palette.primary, "#FFC000");
+  assert.equal(palette.sources.primary, "primary-cta");
+  assert.equal(palette.foreground, "#FFFFFF");
+  assert.equal(palette.sources.foreground, "heading-text");
+  assert.equal(lamborghini.colors["cyan-pulse"], "#29ABE2");
+  assert.equal(Object.keys(lamborghini.colors).length, 28);
+});
+test("la exportación combina siete fuentes y coincide exactamente con la vista previa", () => {
   const ids = [
     "spotify",
     "lamborghini",
     "wired",
-    "linear.app",
     "pinterest",
     "apple",
     "kraken",
@@ -125,6 +141,7 @@ test("la exportación combina ocho fuentes y coincide exactamente con la vista p
   assert.deepEqual(yaml.resolvedCss, design.css);
   assert.equal(yaml.mode, "dark");
   assert.equal(yaml.colors.primary, "#1ed760");
+  assert.equal(yaml.colorRoleSources.primary, "spotify-green");
   sections.forEach((s, i) =>
     assert.equal(yaml.sources[s.key], `dataset/${ids[i]}.json`),
   );
@@ -138,6 +155,14 @@ test("la exportación combina ocho fuentes y coincide exactamente con la vista p
 });
 test("se recuperan selecciones guardadas obsoletas o corruptas", () => {
   assert.deepEqual(validSelection(catalog, null), defaultSelection);
+  assert.equal(
+    validSelection(catalog, { layout: "wired", spacing: "linear.app" }).layout,
+    "wired",
+  );
+  assert.equal(
+    validSelection(catalog, { spacing: "linear.app" }).layout,
+    "linear.app",
+  );
   assert.equal(
     validSelection(catalog, { colors: "no-existe" }).colors,
     "supabase",
@@ -178,4 +203,22 @@ test("todas las familias tienen CSS, archivos reales y licencia local sin URLs r
         file,
       );
   }
+});
+
+test("las guías conservan tratamientos distintos de campos y tarjetas", () => {
+  const design = (inputs, shape = "supabase") =>
+    composeDesign(catalog, { ...defaultSelection, inputs, shape });
+  assert.equal(design("airbnb").inputs.border, "outline");
+  assert.equal(design("airbnb").css["--input-focus-shadow"], "none");
+  assert.equal(design("ibm").inputs.border, "underline");
+  assert.equal(design("bugatti").css["--input-padding"], "12px 0");
+  assert.equal(design("starbucks").inputs.label, "floating");
+  assert.equal(design("starbucks").css["--input-padding"], "12px");
+  assert.match(design("sentry").css["--input-focus-shadow"], /inset/);
+  assert.equal(design("sanity").css["--input-focus-bg"], "#072227");
+  assert.equal(design("supabase", "nike").content.product.style.padding, "0px");
+  assert.notDeepEqual(
+    design("supabase", "nike").content.product,
+    design("supabase", "wise").content.product,
+  );
 });
