@@ -90,7 +90,9 @@ Desde `/`, **Explorar demos** abre `/demo`, el índice de los tres prototipos:
 - `/demo/delivery`: **a punto**, restaurantes y comercios ficticios con filtros, cambio de dirección, menús y pedido.
 - `/demo/videos`: **plano**, descubrimiento audiovisual, géneros, lista guardada y vista previa visual con controles de reproducción.
 
-Cada ruta renderiza una sola página dentro de la aplicación React/Vite. Acepta acceso directo, recarga y barra final; en un hosting estático se requiere el fallback de rutas a `index.html`. Las demos incluyen navegación entre ellas y regreso al editor.
+Cada ruta renderiza una sola página dentro de la aplicación React/Vite. Acepta acceso directo, recarga y barra final. El archivo `vercel.json` configura el fallback a `index.html` para las rutas de React en Vercel, manteniendo la entrega de los archivos estáticos existentes. En otros hostings estáticos se debe configurar el mismo fallback. Las demos incluyen navegación entre ellas y regreso al editor.
+
+Si Vercel devuelve `404: NOT_FOUND` al abrir `/demo` o una de sus páginas, comprueba que el despliegue incluya el `vercel.json` de la raíz del proyecto. Después de añadirlo, es necesario desplegar un commit que contenga el archivo; volver a desplegar un commit anterior no incorpora la corrección.
 
 El diseño de cada producto procede exclusivamente del `DESIGN.md` de su carpeta en `src/demo`. `npm run demos:tokens` regenera sus `theme.css` desde `resolvedCss` y los estilos de contenido resueltos; `dev` y `build` ejecutan este paso automáticamente. Las composiciones y los estilos de página están separados por producto. Las fuentes y las fotografías se sirven localmente; las URLs originales de las fotografías se registran en `public/demo/photo-sources.json`.
 
