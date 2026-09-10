@@ -81,3 +81,17 @@ Las transiciones del editor usan Framer Motion para interpolar colores, radios y
 Incluye avisos de información, advertencia, error y éxito; estados de formulario; gráficas Recharts con cambio de período y representación; producto con carrito; balance financiero, movimientos y lista de tareas. Son datos e interacciones locales de demostración.
 
 `src/lib/brand-rules.js` interpreta tokens y guías del catálogo completo para bordes, foco, etiquetas flotantes y estilos específicos de tarjetas. Las reglas interpretadas y sus respaldos se incluyen en la exportación. Las guías narrativas no equivalen a una reproducción exhaustiva de cada sitio original.
+
+## Demos de producto
+
+Desde `/`, **Explorar demos** abre `/demo`, el índice de los tres prototipos:
+
+- `/demo/ecommerce`: **objeto**, catálogo con búsqueda, categorías, ofertas, ordenación, favoritos, detalle de producto y carrito.
+- `/demo/delivery`: **a punto**, restaurantes y comercios ficticios con filtros, cambio de dirección, menús y pedido.
+- `/demo/videos`: **plano**, descubrimiento audiovisual, géneros, lista guardada y vista previa visual con controles de reproducción.
+
+Cada ruta renderiza una sola página dentro de la aplicación React/Vite. Acepta acceso directo, recarga y barra final; en un hosting estático se requiere el fallback de rutas a `index.html`. Las demos incluyen navegación entre ellas y regreso al editor.
+
+El diseño de cada producto procede exclusivamente del `DESIGN.md` de su carpeta en `src/demo`. `npm run demos:tokens` regenera sus `theme.css` desde `resolvedCss` y los estilos de contenido resueltos; `dev` y `build` ejecutan este paso automáticamente. Las composiciones y los estilos de página están separados por producto. Las fuentes y las fotografías se sirven localmente; las URLs originales de las fotografías se registran en `public/demo/photo-sources.json`.
+
+Los carritos, nombres de perfil y listas se guardan por demo en `localStorage`. No hay pagos, pedidos, geolocalización ni reproducción de películas reales. La vista previa de streaming anima imágenes de muestra y permite pausar, avanzar y continuar. No requiere credenciales ni servicios externos.

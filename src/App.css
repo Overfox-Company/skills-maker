@@ -1589,3 +1589,6 @@
 .gallery .brand-form[data-border="none"] :is(input, textarea):focus {
   border-color: var(--input-focus-color);
 }
+
+.topbar .studio-demo-link { color:#3ecf8e; border-color:#3ecf8e55; background:#3ecf8e0a; }
+@media(max-width:620px) { .topbar { padding-inline:16px; gap:12px; } .topbar-right { gap:8px; } .topbar .studio-demo-link { font-size:11px; padding:6px 8px; } .topbar .studio-demo-link svg:last-child { display:none; } }

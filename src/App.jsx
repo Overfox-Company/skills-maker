@@ -752,6 +752,9 @@ function App() {
             <span className="studio-tag">STUDIO</span>
           </a>
           <div className="topbar-right">
+            <Button asChild variant="outline" size="sm" className="studio-demo-link">
+              <a href="/demo"><LayoutGrid size={15} /> Explorar demos <ArrowUpRight size={14} /></a>
+            </Button>
             <span className="local-fonts">
               <span className="live-dot" />
               {fontCount} fuentes locales
