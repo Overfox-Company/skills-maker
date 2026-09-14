@@ -79,6 +79,7 @@ import {
   sections,
   validSelection,
 } from "./lib/design-engine";
+import { trackDesignGenerated } from "./lib/telemetry.js";
 const loadExporter = () => import("./lib/export-design");
 import "./App.css";
 
@@ -730,6 +731,7 @@ function App() {
       const { sources, fontManifest } = await loadExportSources(design);
       const result = generateMarkdown(design, sources, fontManifest);
       downloadMarkdown(result);
+      trackDesignGenerated({ mode: design.palette.mode });
       notify("DESIGN.md exportado. Listo para tu próximo proyecto.");
     } catch (e) {
       setExportError(e.message);
