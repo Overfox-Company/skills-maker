@@ -11,6 +11,10 @@ import {
   validSelection,
 } from "../src/lib/design-engine.js";
 import { generateMarkdown } from "../src/lib/export-design.js";
+import {
+  getProductType,
+  productTypes,
+} from "../src/lib/product-types.js";
 const catalog = JSON.parse(
   await readFile(new URL("../src/generated/catalog.json", import.meta.url)),
 );
@@ -147,10 +151,10 @@ test("la exportación combina siete fuentes y coincide exactamente con la vista 
   );
   assert.doesNotMatch(markdown, /\/Users\//);
   assert.match(markdown, /\/fonts\/saira-condensed\/font.css/);
-  assert.match(markdown, /Adaptaciones explícitas/);
+  assert.match(markdown, /## 13\. Agent Implementation Rules/);
   assert.throws(
     () => generateMarkdown(design, {}, manifest),
-    /Falta el archivo/,
+    /Missing source file/,
   );
 });
 test("se recuperan selecciones guardadas obsoletas o corruptas", () => {
@@ -171,6 +175,101 @@ test("se recuperan selecciones guardadas obsoletas o corruptas", () => {
     validSelection(catalog, { colors: "spotify" }).colors,
     "spotify",
   );
+  assert.equal(
+    validSelection(catalog, { productType: "ecommerce" }).productType,
+    "ecommerce",
+  );
+  assert.equal(
+    validSelection(catalog, { productType: "no-existe" }).productType,
+    undefined,
+  );
+});
+
+test("los tipos de producto viven en un catálogo central completo y extensible", () => {
+  const fields = [
+    "uxPriorities",
+    "informationHierarchy",
+    "navigationPrinciples",
+    "interactionPrinciples",
+    "contentPrinciples",
+    "primaryActions",
+    "discoveryPatterns",
+    "trustAndSafetyConsiderations",
+    "commonPatterns",
+    "patternsToAvoid",
+  ];
+  assert.equal(productTypes.length, 15);
+  assert.equal(new Set(productTypes.map(({ id }) => id)).size, 15);
+  for (const product of productTypes) {
+    assert.equal(getProductType(product.id), product);
+    assert.ok(product.label);
+    assert.ok(product.description);
+    assert.ok(product.primaryObjective);
+    for (const field of fields)
+      assert.ok(product[field].length >= 3, `${product.id}/${field}`);
+  }
+});
+
+test("el tipo de producto cambia las reglas UX sin alterar el sistema visual", () => {
+  const render = (productType) => {
+    const design = composeDesign(catalog, { ...defaultSelection, productType });
+    return {
+      design,
+      markdown: generateMarkdown(design, sources, manifest),
+    };
+  };
+  const ecommerce = render("ecommerce");
+  const streaming = render("video-streaming");
+  const productivity = render("project-management-productivity");
+
+  assert.deepEqual(ecommerce.design.css, streaming.design.css);
+  assert.deepEqual(streaming.design.css, productivity.design.css);
+  assert.match(ecommerce.markdown, /Add to cart/);
+  assert.match(streaming.markdown, /Continue watching/);
+  assert.match(productivity.markdown, /in-context editing/);
+
+  const experience = (markdown) =>
+    markdown.match(/## 2\. Product Objective[\s\S]*?(?=## 4\. Layout)/)?.[0];
+  assert.notEqual(
+    experience(ecommerce.markdown),
+    experience(streaming.markdown),
+  );
+  assert.notEqual(
+    experience(streaming.markdown),
+    experience(productivity.markdown),
+  );
+
+  const yaml = parse(ecommerce.markdown.split("---\n")[1]);
+  assert.equal(yaml.productExperience.id, "ecommerce");
+  assert.deepEqual(yaml.resolvedCss, ecommerce.design.css);
+});
+
+test("una configuración antigua sigue exportando sin inventar un tipo de producto", () => {
+  const legacySelection = validSelection(catalog, { colors: "spotify" });
+  const design = composeDesign(catalog, legacySelection);
+  const markdown = generateMarkdown(design, sources, manifest);
+  const yaml = parse(markdown.split("---\n")[1]);
+
+  assert.equal(design.productType, null);
+  assert.equal(yaml.productExperience, undefined);
+  assert.doesNotMatch(markdown, /# Product Experience/);
+  assert.match(markdown, /## 1\. Design Philosophy/);
+});
+
+test("la exportación es una skill en inglés, ordenada y con presupuesto acotado", () => {
+  const markdown = generateMarkdown(baseline, sources, manifest);
+  const headings = [...markdown.matchAll(/^## (\d+)\. /gm)].map(
+    ([, number]) => Number(number),
+  );
+  assert.deepEqual(headings, Array.from({ length: 13 }, (_, index) => index + 1));
+  assert.match(markdown, /## 1\. Design Philosophy/);
+  assert.match(markdown, /## 10\. Responsive \/ Mobile/);
+  assert.doesNotMatch(
+    markdown,
+    /Mi sistema de diseño|Sistema compuesto|Experiencia de producto|Adaptaciones explícitas/,
+  );
+  const estimatedTokens = Math.ceil(markdown.length / 4);
+  assert.ok(estimatedTokens >= 9000 && estimatedTokens <= 15000);
 });
 test("todas las familias tienen CSS, archivos reales y licencia local sin URLs remotas", async () => {
   const families = new Set(

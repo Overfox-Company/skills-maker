@@ -28,6 +28,15 @@ export const routes = [
     image: "mountain",
     number: "03",
   },
+  {
+    path: "/demo/health",
+    name: "Salud / Fitness",
+    brand: "pulso.",
+    text: "Tu salud, en contexto.",
+    theme: "health",
+    image: null,
+    number: "04",
+  },
 ];
 export const photo = (name) => `/demo/${name}.jpg`;
 export const money = (amount) =>

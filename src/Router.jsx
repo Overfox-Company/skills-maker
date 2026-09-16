@@ -5,12 +5,14 @@ const DemoIndex = lazy(() => import("./demo/Index"));
 const Ecommerce = lazy(() => import("./demo/ecommerce/Page"));
 const Delivery = lazy(() => import("./demo/delivery/Page"));
 const Videos = lazy(() => import("./demo/videos/Page"));
+const Health = lazy(() => import("./demo/health/Page"));
 const pages = {
   "/": Studio,
   "/demo": DemoIndex,
   "/demo/ecommerce": Ecommerce,
   "/demo/delivery": Delivery,
   "/demo/videos": Videos,
+  "/demo/health": Health,
 };
 
 // Normal links preserve browser history, direct URLs and refresh without a router dependency.

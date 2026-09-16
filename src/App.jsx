@@ -26,6 +26,7 @@ import {
   SlidersHorizontal,
   Square,
   TextCursorInput,
+  Target,
   Type,
   X,
   Zap,
@@ -79,6 +80,7 @@ import {
   sections,
   validSelection,
 } from "./lib/design-engine";
+import { productTypes } from "./lib/product-types.js";
 import { trackDesignGenerated } from "./lib/telemetry.js";
 const loadExporter = () => import("./lib/export-design");
 import "./App.css";
@@ -672,11 +674,12 @@ function App() {
   const exportLock = useRef(false);
   const toastTimer = useRef(null);
   const design = useMemo(() => composeDesign(catalog, selection), [selection]);
+  const selectedProduct = design.productType;
   const codeLoading = activeTab === "markdown" && codeResult?.design !== design;
   const markdown = codeResult?.design === design ? codeResult.markdown : "";
-  const changed = sections.filter(
-    (s) => selection[s.key] !== "supabase",
-  ).length;
+  const changed =
+    sections.filter((s) => selection[s.key] !== "supabase").length +
+    (selectedProduct ? 1 : 0);
   const fontCount = new Set(
     catalog.flatMap((b) => b.families.map((f) => f.family)),
   ).size;
@@ -731,7 +734,10 @@ function App() {
       const { sources, fontManifest } = await loadExportSources(design);
       const result = generateMarkdown(design, sources, fontManifest);
       downloadMarkdown(result);
-      trackDesignGenerated({ mode: design.palette.mode });
+      trackDesignGenerated({
+        mode: design.palette.mode,
+        productType: selectedProduct?.id,
+      });
       notify("DESIGN.md exportado. Listo para tu próximo proyecto.");
     } catch (e) {
       setExportError(e.message);
@@ -778,16 +784,16 @@ function App() {
                 </DialogHeader>
                 <ol className="help-list">
                   <li>
-                    Elige una marca para cada una de las siete secciones. Puedes
-                    escribir el nombre con el selector abierto para encontrarla.
+                    Elige el tipo de producto si quieres añadir reglas UX y una
+                    marca para cada una de las siete secciones visuales.
                   </li>
                   <li>
                     Prueba los componentes. Los cambios afectan a la vista
                     previa y al archivo que exportas.
                   </li>
                   <li>
-                    Pulsa Exportar. Recibirás un DESIGN.md con tokens, reglas y
-                    fuentes seleccionadas.
+                    Pulsa Exportar. Recibirás un DESIGN.md con reglas de
+                    producto, tokens, reglas visuales y fuentes seleccionadas.
                   </li>
                 </ol>
                 <p className="help-note">
@@ -816,7 +822,73 @@ function App() {
                   <br />
                   <span>Hazlo tuyo.</span>
                 </h1>
-                <p>Siete decisiones. Un lenguaje visual.</p>
+                <p>
+                  Experiencia de producto y lenguaje visual, en una sola guía.
+                </p>
+              </div>
+              <div className="product-selector-block">
+                <div className="selector-label">
+                  <Label htmlFor="select-product-type">
+                    <Target size={15} />
+                    Tipo de producto
+                  </Label>
+                  <span>UX</span>
+                </div>
+                <Select
+                  value={selection.productType ?? "__none__"}
+                  onValueChange={(value) => {
+                    setSelection((old) => {
+                      if (value !== "__none__")
+                        return { ...old, productType: value };
+                      const visualSelection = { ...old };
+                      delete visualSelection.productType;
+                      return visualSelection;
+                    });
+                    setExportError("");
+                  }}
+                >
+                  <SelectTrigger
+                    id="select-product-type"
+                    aria-label="Tipo de producto"
+                    className="brand-select product-select"
+                  >
+                    <SelectValue>
+                      <Target size={14} />
+                      {selectedProduct?.label ?? "Sin tipo de producto"}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent
+                    position="popper"
+                    align="start"
+                    className="brand-options product-options"
+                  >
+                    <SelectItem
+                      value="__none__"
+                      textValue="Sin tipo de producto"
+                    >
+                      <span className="product-option">
+                        <strong>Sin tipo de producto</strong>
+                        <small>Exporta únicamente el sistema visual.</small>
+                      </span>
+                    </SelectItem>
+                    {productTypes.map((product) => (
+                      <SelectItem
+                        key={product.id}
+                        value={product.id}
+                        textValue={product.label}
+                      >
+                        <span className="product-option">
+                          <strong>{product.label}</strong>
+                          <small>{product.description}</small>
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="product-description">
+                  {selectedProduct?.description ??
+                    "Opcional. Añade jerarquía, navegación e interacción específicas."}
+                </p>
               </div>
               <div className="selectors-heading">
                 <span>Referencias por sección</span>
@@ -887,10 +959,10 @@ function App() {
               <div className="sidebar-reset">
                 <span>
                   {changed
-                    ? `${changed} ${changed === 1 ? "sección personalizada" : "secciones personalizadas"}`
+                    ? `${changed} ${changed === 1 ? "decisión personalizada" : "decisiones personalizadas"}`
                     : "Punto de partida: Supabase"}
                 </span>
-                <Tip label="Restablecer todas las secciones a Supabase">
+                <Tip label="Restablecer el tipo y todas las secciones">
                   <Button
                     variant="ghost"
                     size="sm"

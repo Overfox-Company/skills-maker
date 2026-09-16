@@ -1,4 +1,5 @@
 import { inputRules, contentRules } from "./brand-rules.js";
+import { getProductType } from "./product-types.js";
 // Pure composition engine, shared by the preview, Markdown export and regression checks.
 export const sections = [
   {
@@ -449,6 +450,7 @@ export function composeDesign(catalog, selection) {
     inputs,
     content,
     selected,
+    productType: getProductType(selection?.productType),
     palette,
     css,
     components: { buttons: b, inputs: i },
@@ -484,7 +486,7 @@ export function composeDesign(catalog, selection) {
 }
 export function validSelection(catalog, value) {
   const ids = new Set(catalog.map((b) => b.id));
-  return Object.fromEntries(
+  const validated = Object.fromEntries(
     sections.map(({ key }) => [
       key,
       ids.has(value?.[key])
@@ -494,4 +496,8 @@ export function validSelection(catalog, value) {
           : defaultSelection[key],
     ]),
   );
+  const productType = getProductType(value?.productType);
+  return productType
+    ? { ...validated, productType: productType.id }
+    : validated;
 }

@@ -1,0 +1,48 @@
+/* Resolved directly from this folder's DESIGN.md. */
+.demo-health {
+  color-scheme: dark;
+  --background: #181818;
+  --card: #303030;
+  --popover: #303030;
+  --foreground: #ffffff;
+  --primary: #da291c;
+  --primary-foreground: #ffffff;
+  --border: #303030;
+  --muted-foreground: #969696;
+  --muted: color-mix(in srgb, #303030, #ffffff 7%);
+  --secondary: color-mix(in srgb, #303030, #ffffff 7%);
+  --secondary-foreground: #ffffff;
+  --accent: color-mix(in srgb, #303030, #ffffff 12%);
+  --accent-foreground: #ffffff;
+  --success: #03904a;
+  --warning: #f13a2c;
+  --destructive: #dc2626;
+  --info: #4c98b9;
+  --radius: 8px;
+  --card-radius: 8px;
+  --button-radius: 9999px;
+  --input-radius: 8px;
+  --preview-font: Inter, sans-serif;
+  --heading-font: Inter, sans-serif;
+  --mono-font: "JetBrains Mono", monospace;
+  --body-size: 14px;
+  --body-weight: 400;
+  --body-leading: 1.5;
+  --heading-size: 44px;
+  --heading-weight: 700;
+  --heading-tracking: -0.5px;
+  --heading-leading: 1.1;
+  --button-weight: 400;
+  --button-tracking: 0;
+  --button-padding: 8px 16px;
+  --input-padding: 10px 12px;
+  --sample-padding: 12px;
+  --sample-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --input-height: 44px;
+  --input-bg: #181818;
+  --input-color: #ffffff;
+  --input-border: #303030;
+  --input-focus-width: 2px;
+  --input-focus-color: #da291c;
+  --input-focus-shadow: 0 0 0 3px color-mix(in srgb, #da291c, transparent 80%);
+}

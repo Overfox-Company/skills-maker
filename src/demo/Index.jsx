@@ -13,16 +13,16 @@ export default function DemoIndex() {
         <a href="/">
           <ArrowLeft size={16} /> DESIGN.md Studio
         </a>
-        <span>EXPERIMENTOS DE DISEÑO / 003</span>
+        <span>EXPERIMENTOS DE DISEÑO / 004</span>
       </header>
       <main>
         <p className="demo-index-label">
           <Code2 size={16} /> DEL SISTEMA AL PRODUCTO
         </p>
         <h1>
-          Tres productos.
+          Cuatro productos.
           <br />
-          <span>Tres formas de verlos.</span>
+          <span>Cuatro formas de verlos.</span>
         </h1>
         <p className="demo-index-intro">
           Explora cómo un archivo DESIGN.md se convierte en una experiencia.
@@ -36,7 +36,20 @@ export default function DemoIndex() {
               className={`demo-index-card demo-index-${route.theme}`}
             >
               <div className="demo-index-image">
-                <img src={photo(route.image)} alt={`Vista de ${route.name}`} />
+                {route.image ? (
+                  <img src={photo(route.image)} alt={`Vista de ${route.name}`} />
+                ) : (
+                  <div className="demo-index-health-preview" aria-hidden="true">
+                    <span className="demo-index-health-ring">76%</span>
+                    <div>
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                    </div>
+                  </div>
+                )}
                 <span>{route.number} / DEMO</span>
                 <strong>
                   {route.brand}

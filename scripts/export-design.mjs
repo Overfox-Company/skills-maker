@@ -7,18 +7,23 @@ import {
   sections,
 } from "../src/lib/design-engine.js";
 import { generateMarkdown } from "../src/lib/export-design.js";
+import { getProductType } from "../src/lib/product-types.js";
 const { brands } = await buildCatalog();
 const selection = { ...defaultSelection };
 for (const arg of process.argv.slice(2)) {
   const [key, id] = arg.replace(/^--/, "").split("=");
+  if (key === "productType" && getProductType(id)) {
+    selection.productType = id;
+    continue;
+  }
   if (!sections.some((s) => s.key === key) || !brands.some((b) => b.id === id))
     throw new Error(
-      `Opción inválida: ${arg}. Usa --sección=marca; pnpm catalog muestra las marcas.`,
+      `Opción inválida: ${arg}. Usa --sección=marca o --productType=tipo; npm run catalog muestra las marcas.`,
     );
   selection[key] = id;
 }
 const design = composeDesign(brands, selection);
-const ids = [...new Set(Object.values(selection))];
+const ids = [...new Set(sections.map(({ key }) => selection[key]))];
 const sources = Object.fromEntries(
   await Promise.all(
     ids.map(async (id) => [

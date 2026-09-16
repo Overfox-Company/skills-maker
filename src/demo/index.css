@@ -59,7 +59,7 @@
 }
 .demo-index-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
 .demo-index-card {
@@ -122,6 +122,51 @@
 .demo-index-delivery .demo-index-image strong {
   color: #ff6984;
 }
+.demo-index-health .demo-index-image {
+  background: #181818;
+}
+.demo-index-health .demo-index-image strong {
+  color: #fff;
+}
+.demo-index-health-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 32px;
+  padding: 34px;
+  background:
+    linear-gradient(135deg, transparent 40%, #2b1715),
+    #181818;
+}
+.demo-index-health-ring {
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font: 600 18px Inter, sans-serif;
+  background: radial-gradient(circle at center, #242424 58%, transparent 60%),
+    conic-gradient(#da291c 0 76%, #424242 76% 100%);
+}
+.demo-index-health-preview > div {
+  height: 116px;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+.demo-index-health-preview i {
+  width: 13px;
+  height: 48%;
+  border-radius: 3px 3px 0 0;
+  background: #555;
+}
+.demo-index-health-preview i:nth-child(2) { height: 72%; }
+.demo-index-health-preview i:nth-child(3) { height: 55%; }
+.demo-index-health-preview i:nth-child(4) { height: 88%; }
+.demo-index-health-preview i:nth-child(5) { height: 76%; background: #da291c; }
 .demo-index-card-body {
   display: flex;
   justify-content: space-between;
