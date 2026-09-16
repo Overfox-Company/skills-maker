@@ -97,3 +97,23 @@ Si Vercel devuelve `404: NOT_FOUND` al abrir `/demo` o una de sus páginas, comp
 El diseño de cada producto procede exclusivamente del `DESIGN.md` de su carpeta en `src/demo`. `npm run demos:tokens` regenera sus `theme.css` desde `resolvedCss` y los estilos de contenido resueltos; `dev` y `build` ejecutan este paso automáticamente. Las composiciones y los estilos de página están separados por producto. Las fuentes y las fotografías se sirven localmente; las URLs originales de las fotografías se registran en `public/demo/photo-sources.json`.
 
 Los carritos, nombres de perfil y listas se guardan por demo en `localStorage`. No hay pagos, pedidos, geolocalización ni reproducción de películas reales. La vista previa de streaming anima imágenes de muestra y permite pausar, avanzar y continuar. No requiere credenciales ni servicios externos.
+
+### Wireframes de producto
+
+El panel presenta tres vistas por cada uno de los 15 tipos de producto (45 en total).
+Las pestañas y miniaturas permiten recorrer las composiciones. Los controles dentro
+de los wireframes son ilustrativos; no ejecutan acciones del producto.
+
+`src/lib/product-wireframes.js` define navegación, vistas, distribuciones y bloques
+por producto. `product-types.js` adjunta ese recorrido al arquetipo que recibe tanto
+el renderer como la exportación de DESIGN.md. Añadir una vista consiste en componer
+bloques existentes; no hay versiones separadas por marca o combinación visual.
+
+El renderer en `src/components/product-skill-preview.jsx` consume los tokens del
+motor existente: paleta, tipografía, distribución, espaciado, geometría de tarjetas,
+sombras, botones y campos. Cambiar de producto conserva las selecciones visuales;
+cambiarlas conserva la vista activa. Sin tipo de producto se mantiene la galería.
+
+La exportación incluye `wireframes` y la intención del arquetipo. Las decisiones
+del recorrido quedan disponibles para el agente sin presentar texto explicativo
+en el panel visual.

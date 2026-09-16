@@ -1,4 +1,7 @@
+import { ProductSkillPreview } from "./components/product-skill-preview";
 import { ContentSamples, BrandField } from "./components/content-samples";
+import { ImagePalettePicker } from "./components/image-palette-picker";
+import { PaletteRoleEditor } from "./components/palette-role-editor";
 import { motion, useReducedMotion } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Sun03Icon from "@hugeicons-pro/core-stroke-rounded/Sun03Icon";
@@ -81,6 +84,7 @@ import {
   validSelection,
 } from "./lib/design-engine";
 import { productTypes } from "./lib/product-types.js";
+import { paletteToBrand } from "./lib/palette-extractor.js";
 import { trackDesignGenerated } from "./lib/telemetry.js";
 const loadExporter = () => import("./lib/export-design");
 import "./App.css";
@@ -160,8 +164,9 @@ function Sample({ number, title, tag, children, className = "" }) {
     </motion.section>
   );
 }
-function Gallery({ design, notify }) {
+function Gallery({ design, notify, onReassignRole }) {
   const reduceMotion = useReducedMotion();
+  const customPalette = design.selected.colors.extractedPalette;
   // Interpolate shared tokens so nested shadcn components change together.
   // Font family and column count switch discretely; layout handles their reflow.
   const immediate = {};
@@ -319,7 +324,9 @@ function Gallery({ design, notify }) {
         <div className="swatch-labels">
           {swatches.map(([name, color, token]) => (
             <div key={name}>
-              <span title={`Token original: ${token}`}>{name} · {token}</span>
+              <span title={`Token original: ${token}`}>
+                {name} · {token}
+              </span>
               <code>{color.toUpperCase()}</code>
             </div>
           ))}
@@ -333,30 +340,38 @@ function Gallery({ design, notify }) {
               </Badge>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="all-color-grid">
-                {Object.entries(design.selected.colors.colors).map(
-                  ([name, color]) => (
-                    <button
-                      type="button"
-                      key={name}
-                      className="color-token"
-                      onClick={async () => {
-                        try {
-                          await navigator.clipboard.writeText(color);
-                          notify(`${name}: ${color} copiado`);
-                        } catch {
-                          notify(`${name}: ${color}`);
-                        }
-                      }}
-                      title={`${name}: ${color}`}
-                    >
-                      <span style={{ background: color }} />
-                      <strong>{name}</strong>
-                      <code>{color}</code>
-                    </button>
-                  ),
-                )}
-              </div>
+              {customPalette ? (
+                <PaletteRoleEditor
+                  palette={customPalette}
+                  onReassignRole={onReassignRole}
+                  notify={notify}
+                />
+              ) : (
+                <div className="all-color-grid">
+                  {Object.entries(design.selected.colors.colors).map(
+                    ([name, color]) => (
+                      <button
+                        type="button"
+                        key={name}
+                        className="color-token"
+                        onClick={async () => {
+                          try {
+                            await navigator.clipboard.writeText(color);
+                            notify(`${name}: ${color} copiado`);
+                          } catch {
+                            notify(`${name}: ${color}`);
+                          }
+                        }}
+                        title={`${name}: ${color}`}
+                      >
+                        <span style={{ background: color }} />
+                        <strong>{name}</strong>
+                        <code>{color}</code>
+                      </button>
+                    ),
+                  )}
+                </div>
+              )}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -665,6 +680,8 @@ function Gallery({ design, notify }) {
 }
 function App() {
   const [selection, setSelection] = useState(initialSelection);
+  const [customPaletteBrand, setCustomPaletteBrand] = useState(null);
+  const [palettePickerKey, setPalettePickerKey] = useState(0);
   const [activeTab, setActiveTab] = useState("components");
   const [codeResult, setCodeResult] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -673,7 +690,15 @@ function App() {
   const [focusMode, setFocusMode] = useState(false);
   const exportLock = useRef(false);
   const toastTimer = useRef(null);
-  const design = useMemo(() => composeDesign(catalog, selection), [selection]);
+  const previousPalette = useRef(selection.colors);
+  const availableCatalog = useMemo(
+    () => (customPaletteBrand ? [...catalog, customPaletteBrand] : catalog),
+    [customPaletteBrand],
+  );
+  const design = useMemo(
+    () => composeDesign(availableCatalog, selection),
+    [availableCatalog, selection],
+  );
   const selectedProduct = design.productType;
   const codeLoading = activeTab === "markdown" && codeResult?.design !== design;
   const markdown = codeResult?.design === design ? codeResult.markdown : "";
@@ -687,6 +712,32 @@ function App() {
     setToast(message);
     clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setToast(""), 3600);
+  }
+  function applyExtractedPalette(palette) {
+    const brand = paletteToBrand(palette);
+    setCustomPaletteBrand(brand);
+    setSelection((current) => {
+      if (current.colors !== brand.id) previousPalette.current = current.colors;
+      return { ...current, colors: brand.id };
+    });
+    setExportError("");
+  }
+  function clearExtractedPalette() {
+    setCustomPaletteBrand(null);
+    setSelection((current) =>
+      current.colors === "custom-image-palette"
+        ? { ...current, colors: previousPalette.current }
+        : current,
+    );
+    setExportError("");
+  }
+  function reassignPaletteRole(role, hex) {
+    setCustomPaletteBrand((brand) => {
+      if (!brand?.extractedPalette) return brand;
+      const roles = { ...brand.extractedPalette.roles, [role]: hex };
+      return paletteToBrand({ ...brand.extractedPalette, roles });
+    });
+    setExportError("");
   }
   useEffect(() => () => clearTimeout(toastTimer.current), []);
   useEffect(() => {
@@ -760,8 +811,16 @@ function App() {
             <span className="studio-tag">STUDIO</span>
           </a>
           <div className="topbar-right">
-            <Button asChild variant="outline" size="sm" className="studio-demo-link">
-              <a href="/demo"><LayoutGrid size={15} /> Explorar demos <ArrowUpRight size={14} /></a>
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="studio-demo-link"
+            >
+              <a href="/demo">
+                <LayoutGrid size={15} /> Explorar demos{" "}
+                <ArrowUpRight size={14} />
+              </a>
             </Button>
             <span className="local-fonts">
               <span className="live-dot" />
@@ -907,51 +966,61 @@ function App() {
                         </Label>
                         <span>{String(index + 1).padStart(2, "0")}</span>
                       </div>
-                      <Select
-                        value={selection[section.key]}
-                        onValueChange={(value) => {
-                          setSelection((old) => ({
-                            ...old,
-                            [section.key]: value,
-                          }));
-                          setExportError("");
-                        }}
-                      >
-                        <SelectTrigger
-                          id={`select-${section.key}`}
-                          aria-label={section.label}
-                          className="brand-select"
+                      <div className={section.key === "colors" ? "palette-control-row" : undefined}>
+                        <Select
+                          value={selection[section.key]}
+                          onValueChange={(value) => {
+                            setSelection((old) => ({
+                              ...old,
+                              [section.key]: value,
+                            }));
+                            setExportError("");
+                          }}
                         >
-                          <SelectValue>
-                            <BrandDot brand={brand} />
-                            {brand.name}
-                            {section.key === "colors" && (
-                              <PaletteModeIcon
-                                mode={nativePalette(brand).mode}
-                              />
-                            )}
-                          </SelectValue>
-                        </SelectTrigger>
-                        <SelectContent
-                          position="popper"
-                          align="start"
-                          className="brand-options"
-                        >
-                          {catalog.map((b) => (
-                            <SelectItem
-                              key={b.id}
-                              value={b.id}
-                              textValue={b.name}
-                            >
-                              <BrandDot brand={b} />
-                              {b.name}
+                          <SelectTrigger
+                            id={`select-${section.key}`}
+                            aria-label={section.label}
+                            className="brand-select"
+                          >
+                            <SelectValue>
+                              <BrandDot brand={brand} />
+                              {brand.name}
                               {section.key === "colors" && (
-                                <PaletteModeIcon mode={nativePalette(b).mode} />
+                                <PaletteModeIcon
+                                  mode={nativePalette(brand).mode}
+                                />
                               )}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                            </SelectValue>
+                          </SelectTrigger>
+                          <SelectContent
+                            position="popper"
+                            align="start"
+                            className="brand-options"
+                          >
+                            {(section.key === "colors" ? availableCatalog : catalog).map((b) => (
+                              <SelectItem
+                                key={b.id}
+                                value={b.id}
+                                textValue={b.name}
+                              >
+                                <BrandDot brand={b} />
+                                {b.name}
+                                {section.key === "colors" && (
+                                  <PaletteModeIcon mode={nativePalette(b).mode} />
+                                )}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        {section.key === "colors" && (
+                          <ImagePalettePicker
+                            key={palettePickerKey}
+                            onPalette={applyExtractedPalette}
+                            onClear={clearExtractedPalette}
+                            notify={notify}
+                          />
+                        )}
+                      </div>
                     </div>
                   );
                 })}
@@ -968,6 +1037,8 @@ function App() {
                     size="sm"
                     onClick={() => {
                       setSelection({ ...defaultSelection });
+                      setCustomPaletteBrand(null);
+                      setPalettePickerKey((value) => value + 1);
                       notify("Se restableció el diseño inicial");
                     }}
                     aria-label="Restablecer diseño"
@@ -1014,8 +1085,8 @@ function App() {
                 <div className="eyebrow">
                   <span className="live-dot" /> VISTA PREVIA EN VIVO
                 </div>
-                <h2>De referencias a realidad.</h2>
-                <p>Tu combinación, aplicada a componentes reales.</p>
+                <h2>Visualiza el recorrido de tu producto.</h2>
+                <p>Distintas vistas. Tu mismo sistema visual.</p>
               </div>
               <Tip
                 label={
@@ -1043,7 +1114,7 @@ function App() {
                 <TabsList className="view-tabs">
                   <TabsTrigger value="components">
                     <LayoutGrid size={14} />
-                    Componentes
+                    {selectedProduct ? "Wireframes" : "Sistema visual"}
                   </TabsTrigger>
                   <TabsTrigger value="markdown">
                     <Code2 size={15} />
@@ -1058,7 +1129,21 @@ function App() {
                 </div>
               </div>
               <TabsContent value="components" className="gallery-tab">
-                <Gallery design={design} notify={notify} />
+                {selectedProduct ? (
+                  <ProductSkillPreview design={design} />
+                ) : (
+                  <>
+                    <p className="product-preview-empty">
+                      Selecciona un tipo de producto para ver cómo este sistema
+                      guiará las decisiones del agente.
+                    </p>
+                    <Gallery
+                      design={design}
+                      notify={notify}
+                      onReassignRole={reassignPaletteRole}
+                    />
+                  </>
+                )}
                 <div className="preview-footer">
                   <span>
                     <span className="live-dot" />

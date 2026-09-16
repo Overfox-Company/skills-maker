@@ -1,3 +1,6 @@
+import { productWireframes } from "./product-wireframes.js";
+import { productExperienceTranslations } from "./product-translations.js";
+
 /**
  * @typedef {Object} ProductDefinition
  * @property {string} id
@@ -13,6 +16,9 @@
  * @property {string[]} discoveryPatterns
  * @property {string[]} trustAndSafetyConsiderations
  * @property {string[]} commonPatterns
+ * @property {Object} wireframes Product journey with navigation and distinct screen compositions.
+ * @property {string[]} agentFocus
+ * @property {Object} exportProfile English localization, with a canonical fallback for new archetypes.
  * @property {string[]} patternsToAvoid
  */
 
@@ -1064,7 +1070,14 @@ export const productTypes = Object.freeze(
         "Confundir punto de recogida con ubicación actual.",
       ],
     },
-  ].map(freezeDefinition),
+  ].map((definition) =>
+    freezeDefinition({
+      ...definition,
+      wireframes: productWireframes[definition.id],
+      agentFocus: definition.uxPriorities.slice(0, 4),
+      exportProfile: productExperienceTranslations[definition.id],
+    }),
+  ),
 );
 
 export const productTypesById = new Map(

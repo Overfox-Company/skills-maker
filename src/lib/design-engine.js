@@ -179,7 +179,7 @@ export function nativePalette(brand) {
   );
   const secondaryRole = colorRole(
     c,
-    ["surface-2", "surface-elevated", "canvas-soft", "background-secondary"],
+    ["secondary", "surface-2", "surface-elevated", "canvas-soft", "background-secondary"],
     `color-mix(in srgb, ${cardRole.value}, ${foregroundRole.value} 7%)`,
   );
   const secondaryForegroundRole = colorRole(
@@ -190,7 +190,7 @@ export function nativePalette(brand) {
   );
   const accentRole = colorRole(
     c,
-    ["surface-hover", "surface-3", "hover-background"],
+    ["accent", "surface-hover", "surface-3", "hover-background"],
     `color-mix(in srgb, ${cardRole.value}, ${foregroundRole.value} 12%)`,
   );
   const onPrimaryRole = colorRole(c, ["on-primary", "primary-cta-text"], readableOn(primary));

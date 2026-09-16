@@ -11,10 +11,7 @@ import {
   validSelection,
 } from "../src/lib/design-engine.js";
 import { generateMarkdown } from "../src/lib/export-design.js";
-import {
-  getProductType,
-  productTypes,
-} from "../src/lib/product-types.js";
+import { getProductType, productTypes } from "../src/lib/product-types.js";
 const catalog = JSON.parse(
   await readFile(new URL("../src/generated/catalog.json", import.meta.url)),
 );
@@ -258,10 +255,13 @@ test("una configuración antigua sigue exportando sin inventar un tipo de produc
 
 test("la exportación es una skill en inglés, ordenada y con presupuesto acotado", () => {
   const markdown = generateMarkdown(baseline, sources, manifest);
-  const headings = [...markdown.matchAll(/^## (\d+)\. /gm)].map(
-    ([, number]) => Number(number),
+  const headings = [...markdown.matchAll(/^## (\d+)\. /gm)].map(([, number]) =>
+    Number(number),
   );
-  assert.deepEqual(headings, Array.from({ length: 13 }, (_, index) => index + 1));
+  assert.deepEqual(
+    headings,
+    Array.from({ length: 13 }, (_, index) => index + 1),
+  );
   assert.match(markdown, /## 1\. Design Philosophy/);
   assert.match(markdown, /## 10\. Responsive \/ Mobile/);
   assert.doesNotMatch(
@@ -320,4 +320,61 @@ test("las guías conservan tratamientos distintos de campos y tarjetas", () => {
     design("supabase", "nike").content.product,
     design("supabase", "wise").content.product,
   );
+});
+
+test("los 15 arquetipos tienen tres vistas diferentes con bloques renderizables", async () => {
+  const renderer = await readFile(
+    new URL("../src/components/product-skill-preview.jsx", import.meta.url),
+    "utf8",
+  );
+  for (const product of productTypes) {
+    const views = product.wireframes.views;
+    assert.equal(views.length, 3, product.id);
+    assert.equal(new Set(views.map((view) => view.id)).size, 3);
+    const compositions = views.map((view) =>
+      JSON.stringify([
+        view.layout,
+        view.blocks.map((node) => node.type),
+        view.aside.map((node) => node.type),
+      ]),
+    );
+    assert.equal(new Set(compositions).size, 3, product.id);
+    for (const view of views) {
+      assert.ok(view.label && view.blocks.length > 0);
+      for (const node of [...view.blocks, ...view.aside]) {
+        assert.match(
+          renderer,
+          new RegExp(`\\b${node.type}:`),
+          `${product.id}/${view.id}/${node.type}`,
+        );
+        assert.ok(node.title);
+      }
+    }
+  }
+});
+
+test("la exportación conserva exactamente la intención visible de todos los arquetipos", () => {
+  for (const product of productTypes) {
+    const design = composeDesign(catalog, {
+      ...defaultSelection,
+      productType: product.id,
+    });
+    const markdown = generateMarkdown(design, sources, manifest);
+    const experience = parse(markdown.split("---\n")[1]).productExperience;
+    assert.deepEqual(experience.previewIntent.agentFocus, product.agentFocus);
+    assert.deepEqual(
+      experience.previewIntent.informationHierarchy,
+      product.informationHierarchy,
+    );
+    assert.deepEqual(
+      experience.previewIntent.patternsToAvoid,
+      product.patternsToAvoid,
+    );
+    assert.equal(
+      experience.previewIntent.primaryObjective,
+      product.primaryObjective,
+    );
+    assert.deepEqual(experience.wireframes, product.wireframes);
+    assert.deepEqual(design.css, baseline.css);
+  }
 });
