@@ -1,5 +1,129 @@
 // English localization of the product archetypes. Consumed through product-types.js.
 export const productExperienceTranslations = {
+  "landing-page": {
+    label: "Landing Page",
+    description: "Persuasive communication, credible proof, and focused conversion.",
+    primaryObjective:
+      "Guide a visitor from their initial intent to one primary action through a clear value proposition, sufficient evidence, and resolved uncertainty.",
+    uxPriorities: [
+      "Audience and value-proposition clarity",
+      "One primary conversion objective",
+      "Decision-led persuasive narrative",
+      "Verifiable evidence and trust",
+      "Objection resolution",
+      "Mobile conversion, SEO, accessibility, and performance",
+    ],
+    informationHierarchy: [
+      "What the offer is, who it is for, and the outcome it promises",
+      "The primary action and what happens next",
+      "The product or mechanism that makes the promise credible",
+      "Benefits supported by capabilities or evidence",
+      "Relevant objections and conditions",
+      "Final conversion without unnecessary distractions",
+    ],
+    navigationPrinciples: [
+      "Match navigation to traffic intent: reduce distractions for campaigns and retain useful context for brand or SEO pages.",
+      "Keep the logo, essential anchors, and primary CTA available when they improve orientation or conversion.",
+      "Do not default to either no navigation or full site navigation; decide from page intent and content depth.",
+    ],
+    interactionPrinciples: [
+      "Make CTA labels describe the action or outcome and keep secondary actions visually subordinate.",
+      "Ask only for information required for the next step, with visible labels, local errors, and preserved valid input.",
+      "Use motion to explain, orient, confirm, or demonstrate; never let it delay the message or block interaction.",
+    ],
+    contentPrinciples: [
+      "Give every section a role in what the visitor must understand or believe before acting.",
+      "Connect benefits to evidence or mechanism before listing isolated features.",
+      "Keep the traffic-source promise, visual headline, SEO title, and actual offer aligned.",
+      "Omit unsupported commercial claims or mark them unambiguously as pending content.",
+    ],
+    primaryActions: [
+      "Understand the value proposition",
+      "Evaluate the product and evidence",
+      "Resolve a relevant objection",
+      "Complete the primary conversion action",
+    ],
+    discoveryPatterns: [
+      "Specific value-proposition hero and CTA",
+      "Visual product or outcome demonstration",
+      "Benefits connected to mechanisms and capabilities",
+      "Contextual proof near the claim it supports",
+      "Progressive objection resolution",
+    ],
+    trustAndSafetyConsiderations: [
+      "Never invent customers, logos, testimonials, people, ratings, metrics, awards, certifications, or results.",
+      "Surface price, privacy, security, cancellation, requirements, and terms where they affect the decision.",
+      "Use specific, verifiable evidence; when it is unavailable, omit it or label the placeholder clearly.",
+    ],
+    commonPatterns: [
+      "A hero that explains the offer, audience, benefit, and next action",
+      "An adaptive promise-to-evidence-to-conversion narrative",
+      "A product showcase that demonstrates how the offer works",
+      "A primary CTA repeated only after meaningful decision points",
+      "A mobile composition reordered for comprehension and action access",
+    ],
+    patternsToAvoid: [
+      "Treating the page as a fixed collection of marketing sections.",
+      "Generic headlines, competing primary CTAs, or an oversized hero with too little information.",
+      "Fabricated testimonials, logos, metrics, customers, awards, or any other social proof.",
+      "Feature lists without benefits, walls of text, or section after section using the same three-card pattern.",
+      "Unnecessary carousels, automatic FAQs, decorative gradients, heavy background video, or pervasive scroll reveals.",
+      "Keyword stuffing, artificial SEO copy, or structured data that does not represent real content.",
+      "Desktop layouts merely compressed for mobile or forms that request unnecessary information.",
+    ],
+    experienceGuidance: {
+      "Guiding principle": [
+        "A landing page is a guided decision journey, not a collection of marketing sections. Every section must help the visitor understand the offer, believe the claims, resolve uncertainty, or perform the primary action. If a section does none of these, remove it.",
+      ],
+      "Context and conversion strategy": [
+        "Infer the audience, product, offer, conversion objective, traffic intent, complexity, perceived risk, and required trust from the prompt when evidence supports the inference. Never invent missing commercial facts.",
+        "Choose one primary conversion action. Multiple visual CTAs may point to it, while genuinely useful secondary actions remain subordinate.",
+        "Let page length follow the amount of explanation and proof required to make a sound decision; simple, low-risk offers need less than complex, expensive, or high-risk offers.",
+      ],
+      Hero: [
+        "Quickly answer: What is this? Who is it for? What main benefit does it provide? What can the visitor do now? Add a trust or context signal only when real material exists.",
+        "Use a concrete headline, precise supporting copy, a specific primary CTA, and a secondary CTA only when it advances evaluation.",
+        "When the offer has an interface, physical product, or visual result, show it working; prefer explanatory product evidence over decorative illustration.",
+      ],
+      "Narrative and benefits": [
+        "Adapt a Promise → Context → Solution → Evidence → Details → Objections → Conversion arc to the offer; these are reasoning stages, not mandatory sections or a fixed order.",
+        "Frame capabilities as Benefit → Evidence or mechanism → Feature. Promote a feature itself only when it is widely understood or is the buying argument.",
+        "Select only the sections needed for the visitor's next decision. Do not add FAQ, pricing, testimonials, integrations, or any other common block automatically.",
+      ],
+      "Product showcase and proof": [
+        "Use screenshots, product mockups, short video, comparisons, diagrams, before/after, or real examples only when they explain the product or result.",
+        "Place social proof near the claim it substantiates. Prefer specific evidence over generic praise.",
+        "Never fabricate companies, quotes, names, photos, usage counts, ratings, awards, certifications, or outcomes. Clearly identify placeholders as pending content.",
+      ],
+      "Objections and CTA hierarchy": [
+        "Identify plausible blockers such as price, effort, compatibility, migration, security, time, cancellation, support, privacy, warranty, or technical requirements, then resolve each in the most natural format.",
+        "Use an unequivocal hierarchy: primary CTA for the conversion, secondary CTA for evaluation, and text links for contextual navigation. CTA copy must state what happens next.",
+        "Repeat the primary CTA after relevant decision points, not mechanically between every section. Consider a header or sticky mobile CTA only when it improves access.",
+      ],
+      Forms: [
+        "Request only the information needed for the next step, group related fields, use visible labels and correct input types, and explain what the visitor receives and what happens next.",
+        "Associate errors with their fields and preserve valid input. Split a long form into steps only when doing so genuinely reduces cognitive load.",
+      ],
+      "Responsive and accessibility": [
+        "Treat mobile as a conversion context, not compressed desktop. Reconsider order, keep copy scannable, preserve explanatory imagery, avoid hover dependencies, and keep the primary action reachable.",
+        "Use semantic structure, one meaningful H1 in normal cases, a logical heading hierarchy, descriptive links and alt text, visible focus, keyboard support, and WCAG 2.2 minimum target sizes; give important CTAs comfortably larger touch areas when possible.",
+      ],
+      SEO: [
+        "For indexable pages, align human search intent, page title, meta description, visual headline, and source promise without requiring identical wording.",
+        "Consider canonical URL, Open Graph, social preview, favicon, sitemap/indexability, internal links, and structured data only when applicable to real content.",
+        "Use people-first content. Never add keyword stuffing, artificial repetition, disconnected SEO sections, fake schema, or copy merely to increase word count.",
+      ],
+      "Performance and motion": [
+        "Design toward LCP ≤ 2.5 s, INP ≤ 200 ms, and CLS ≤ 0.1 in real-user conditions. Optimize media, reserve dimensions, lazy-load below the fold, prioritize relevant hero media, control fonts, and minimize JavaScript.",
+        "The core proposition must remain understandable while secondary resources load. Avoid heavy autoplay background video unless clearly justified and correctly implemented.",
+        "Motion must explain, orient, confirm, demonstrate, or reinforce hierarchy. Respect prefers-reduced-motion and never delay interaction for decorative animation.",
+      ],
+      "Visual hierarchy": [
+        "Guide attention through proposition, product, evidence, and action. Do not let illustration, gradients, decoration, badges, backgrounds, or motion compete with them.",
+        "Use size and contrast to communicate importance. Apply the selected palette, type, spacing, density, radius, component, and elevation rules without weakening conversion clarity.",
+      ],
+    },
+  },
   ecommerce: {
     label: "E-commerce",
     description: "Product discovery, comparison, and purchasing.",

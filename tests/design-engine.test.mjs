@@ -195,8 +195,8 @@ test("los tipos de producto viven en un catálogo central completo y extensible"
     "commonPatterns",
     "patternsToAvoid",
   ];
-  assert.equal(productTypes.length, 15);
-  assert.equal(new Set(productTypes.map(({ id }) => id)).size, 15);
+  assert.equal(productTypes.length, 16);
+  assert.equal(new Set(productTypes.map(({ id }) => id)).size, 16);
   for (const product of productTypes) {
     assert.equal(getProductType(product.id), product);
     assert.ok(product.label);
@@ -322,7 +322,7 @@ test("las guías conservan tratamientos distintos de campos y tarjetas", () => {
   );
 });
 
-test("los 15 arquetipos tienen tres vistas diferentes con bloques renderizables", async () => {
+test("los 16 arquetipos tienen tres vistas diferentes con bloques renderizables", async () => {
   const renderer = await readFile(
     new URL("../src/components/product-skill-preview.jsx", import.meta.url),
     "utf8",
@@ -351,6 +351,24 @@ test("los 15 arquetipos tienen tres vistas diferentes con bloques renderizables"
       }
     }
   }
+});
+
+test("Landing Page exporta una guía de conversión completa sin alterar el sistema visual", () => {
+  const design = composeDesign(catalog, {
+    ...defaultSelection,
+    productType: "landing-page",
+  });
+  const markdown = generateMarkdown(design, sources, manifest);
+  const experience = parse(markdown.split("---\n")[1]).productExperience;
+
+  assert.equal(experience.id, "landing-page");
+  assert.match(markdown, /## Product Experience — Landing Page/);
+  assert.match(markdown, /guided decision journey/);
+  assert.match(markdown, /What is this\? Who is it for\?/);
+  assert.match(markdown, /Never fabricate companies/);
+  assert.match(markdown, /LCP ≤ 2\.5 s/);
+  assert.match(markdown, /prefers-reduced-motion/);
+  assert.deepEqual(design.css, baseline.css);
 });
 
 test("la exportación conserva exactamente la intención visible de todos los arquetipos", () => {

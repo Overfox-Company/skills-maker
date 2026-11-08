@@ -6,6 +6,14 @@ const bullets = (values) => values.map((value) => `- ${value}`).join("\n");
 const ordered = (values) =>
   values.map((value, index) => `${index + 1}. ${value}`).join("\n");
 
+function productExperienceGuidance(profile) {
+  if (!profile.experienceGuidance) return "";
+  const guidance = Object.entries(profile.experienceGuidance)
+    .map(([title, rules]) => `### ${title}\n\n${bullets(rules)}`)
+    .join("\n\n");
+  return `\n## Product Experience — ${profile.label}\n\n${guidance}\n`;
+}
+
 const exportSectionLabels = {
   colors: "Color palette",
   typography: "Typography",
@@ -86,6 +94,8 @@ ${bullets(profile.trustAndSafetyConsiderations)}
 ### Recommended patterns
 
 ${bullets(profile.commonPatterns)}
+
+${productExperienceGuidance(profile)}
 
 ## 12. Do / Don't
 

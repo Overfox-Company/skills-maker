@@ -9,6 +9,71 @@ const view = (id, label, layout, blocks, aside = []) => ({
   aside,
 });
 export const productWireframes = {
+  "landing-page": {
+    nav: ["Producto", "Beneficios", "Cómo funciona"],
+    icon: "layout",
+    views: [
+      view("promise", "Promesa y acción", "wide", [
+        block("hero", "Convierte una tarea compleja en un siguiente paso claro", {
+          art: "image",
+          action: "Empezar gratis",
+          secondary: "Ver cómo funciona",
+          tag: "PARA EQUIPOS QUE QUIEREN AVANZAR",
+          intent:
+            "Explain the offer, audience, benefit, and primary action before adding supporting sections.",
+        }),
+        block("trust", "Prueba real o contenido pendiente claramente identificado"),
+        block("grid", "Beneficios que explican el valor", {
+          art: "image",
+          count: 3,
+          detail: "Beneficio · mecanismo · capacidad",
+        }),
+      ]),
+      view(
+        "evidence",
+        "Producto y evidencia",
+        "split",
+        [
+          block("detail", "Muestra el producto resolviendo la tarea", {
+            art: "image",
+            action: "Probar el producto",
+            options: ["Resultado", "Flujo", "Detalle"],
+            intent:
+              "Prefer explanatory product evidence over decorative imagery and connect capabilities to outcomes.",
+          }),
+          block("steps", "Del problema al resultado", {
+            items: ["Comprender", "Comprobar", "Decidir"],
+          }),
+        ],
+        [
+          block("metrics", "Evidencia verificable", {
+            items: ["Dato real|—", "Caso real|—"],
+          }),
+          block("trust", "No inventar logos, métricas ni testimonios"),
+        ],
+      ),
+      view(
+        "conversion",
+        "Resolver y convertir",
+        "split",
+        [
+          block("checklist", "Dudas resueltas antes de actuar", {
+            items: ["Precio y condiciones", "Seguridad y privacidad", "Soporte y compatibilidad"],
+          }),
+          block("form", "Solicita solo lo necesario", {
+            fields: ["Nombre", "Email de trabajo"],
+          }),
+          block("action", "Solicitar una demostración"),
+        ],
+        [
+          block("steps", "Jerarquía de conversión", {
+            items: ["CTA principal", "Acción auxiliar", "Enlaces contextuales"],
+          }),
+          block("trust", "Explica qué ocurrirá después"),
+        ],
+      ),
+    ],
+  },
   "video-streaming": {
     nav: ["Inicio", "Series", "Películas", "Mi lista"],
     icon: "play",

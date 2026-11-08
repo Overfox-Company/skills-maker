@@ -1,0 +1,11 @@
+
+
+
+# BEGIN intranet-overfox plugin
+[plugins."intranet-overfox@overfox-local"]
+enabled = true
+
+[plugins."intranet-overfox@overfox-local".mcp_servers.overfox_ems]
+enabled = true
+default_tools_approval_mode = "approve"
+# END intranet-overfox plugin

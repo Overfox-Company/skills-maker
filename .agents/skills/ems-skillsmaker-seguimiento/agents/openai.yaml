@@ -1,0 +1,13 @@
+interface:
+  display_name: "Skills Maker · seguimiento EMS"
+  short_description: "Separa tareas, documenta bugs y registra avances en EMS"
+  default_prompt: "Usa $ems-skillsmaker-seguimiento para separar mi solicitud en tareas y dar seguimiento al trabajo en EMS."
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "overfox_ems"
+      description: "Gestión de proyectos, tareas, seguimientos y objetivos en EMS"
+      transport: "streamable_http"
+      url: "https://intranet.overfox.net/api/mcp"

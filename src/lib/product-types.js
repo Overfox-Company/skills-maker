@@ -36,6 +36,79 @@ const freezeDefinition = (definition) =>
 export const productTypes = Object.freeze(
   [
     {
+      id: "landing-page",
+      label: "Landing Page",
+      description: "Comunicación persuasiva, confianza y conversión enfocada.",
+      primaryObjective:
+        "Guiar al visitante desde su intención inicial hasta una acción principal mediante una propuesta clara, evidencia suficiente y resolución de incertidumbre.",
+      uxPriorities: [
+        "Propuesta de valor y adecuación a la audiencia",
+        "Un objetivo de conversión principal",
+        "Narrativa persuasiva basada en decisiones",
+        "Evidencia y confianza verificables",
+        "Resolución de objeciones",
+        "SEO, rendimiento, accesibilidad y conversión móvil",
+      ],
+      informationHierarchy: [
+        "Qué es la oferta, para quién es y qué resultado promete",
+        "Acción principal y qué ocurre después",
+        "Producto o mecanismo que hace creíble la promesa",
+        "Beneficios respaldados por funcionalidades o evidencia",
+        "Objeciones y condiciones relevantes",
+        "Conversión final sin distracciones innecesarias",
+      ],
+      navigationPrinciples: [
+        "Ajustar la navegación a la intención del tráfico: reducir distracciones en campañas y conservar contexto útil en páginas de marca o SEO.",
+        "Mantener logo, anchors esenciales y CTA principal accesibles cuando ayuden a orientarse o convertir.",
+        "No imponer una navegación mínima o completa por defecto; decidir según el recorrido y la profundidad del contenido.",
+      ],
+      interactionPrinciples: [
+        "Hacer que los CTA describan la acción o el resultado y que las acciones secundarias permanezcan subordinadas.",
+        "Pedir en formularios solo la información necesaria para el siguiente paso, con labels visibles, errores locales y valores preservados.",
+        "Usar movimiento para explicar, orientar, confirmar o demostrar; nunca para retrasar el mensaje o bloquear la interacción.",
+      ],
+      contentPrinciples: [
+        "Construir cada sección alrededor de lo que el visitante debe comprender o creer antes de actuar.",
+        "Presentar beneficios con su evidencia o mecanismo antes de enumerar funcionalidades aisladas.",
+        "Mantener coherencia entre la promesa del origen del tráfico, el headline visual, el título SEO y la oferta real.",
+        "Omitir afirmaciones comerciales no proporcionadas o marcarlas inequívocamente como contenido pendiente.",
+      ],
+      primaryActions: [
+        "Comprender la propuesta de valor",
+        "Evaluar el producto y su evidencia",
+        "Resolver una objeción relevante",
+        "Completar la acción de conversión principal",
+      ],
+      discoveryPatterns: [
+        "Hero con propuesta y CTA específicos",
+        "Presentación visual del producto o resultado",
+        "Beneficios conectados con mecanismos y capacidades",
+        "Prueba contextual cerca de las afirmaciones",
+        "Resolución progresiva de objeciones",
+      ],
+      trustAndSafetyConsiderations: [
+        "No inventar clientes, logos, testimonios, personas, ratings, métricas, premios, certificaciones ni resultados.",
+        "Presentar precio, privacidad, seguridad, cancelación, requisitos y condiciones donde afecten la decisión.",
+        "Usar evidencia específica y verificable; si falta, omitirla o identificarla claramente como pendiente.",
+      ],
+      commonPatterns: [
+        "Hero que responde qué es, para quién es, qué beneficio ofrece y qué acción sigue",
+        "Narrativa adaptable de promesa, comprensión, evidencia, objeciones y conversión",
+        "Showcase del producto que demuestra su funcionamiento",
+        "CTA principal repetido solo después de puntos de decisión relevantes",
+        "Composición móvil reconsiderada para comprensión y acceso a la acción",
+      ],
+      patternsToAvoid: [
+        "Tratar la landing como una colección fija de secciones de marketing.",
+        "Usar headlines genéricos, varios CTA primarios compitiendo o un hero enorme sin información suficiente.",
+        "Inventar testimonios, logos, métricas, clientes, premios o cualquier otra prueba social.",
+        "Enumerar funcionalidades sin beneficios, crear muros de texto o repetir secciones idénticas de tres tarjetas.",
+        "Añadir carruseles, FAQ, gradientes, vídeos pesados o scroll reveals sin una función clara.",
+        "Hacer keyword stuffing, contenido SEO artificial o structured data que no represente contenido real.",
+        "Comprimir el diseño desktop para móvil o solicitar datos innecesarios en formularios.",
+      ],
+    },
+    {
       id: "ecommerce",
       label: "E-commerce",
       description: "Descubrimiento, comparación y compra de productos.",
